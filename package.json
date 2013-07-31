@@ -1,0 +1,49 @@
+{
+  "name": "ansi-styles",
+  "version": "0.0.0",
+  "description": "ANSI escape codes for colorizing strings in the terminal",
+  "keywords": [
+    "ansi",
+    "styles",
+    "color",
+    "colors",
+    "terminal",
+    "console",
+    "cli",
+    "string",
+    "tty",
+    "escape",
+    "formatting",
+    "rgb",
+    "256"
+  ],
+  "homepage": "https://github.com/sindresorhus/ansi-styles",
+  "bugs": "https://github.com/sindresorhus/ansi-styles/issues",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "main": "ansi-styles.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sindresorhus/ansi-styles.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "files": [
+    "ansi-styles.js"
+  ]
+}
