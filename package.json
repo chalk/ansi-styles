@@ -6,6 +6,7 @@
     "ansi",
     "styles",
     "color",
+    "colour",
     "colors",
     "terminal",
     "console",
@@ -15,16 +16,26 @@
     "escape",
     "formatting",
     "rgb",
-    "256"
+    "256",
+    "shell",
+    "xterm",
+    "log",
+    "logging",
+    "command-line",
+    "text"
   ],
   "homepage": "https://github.com/sindresorhus/ansi-styles",
   "bugs": "https://github.com/sindresorhus/ansi-styles/issues",
+  "license": "MIT",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
   },
-  "main": "ansi-styles.js",
+  "files": [
+    "ansi-styles.js"
+  ],
+  "main": "ansi-styles",
   "repository": {
     "type": "git",
     "url": "git://github.com/sindresorhus/ansi-styles.git"
@@ -37,13 +48,5 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
-  "files": [
-    "ansi-styles.js"
-  ]
+  }
 }

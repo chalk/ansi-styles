@@ -2,6 +2,8 @@
 
 > ANSI escape codes for colorizing strings in the terminal.
 
+You probably want the higher-level [chalk](https://github.com/sindresorhus/chalk) module for styling your strings.
+
 ![screenshot](screenshot.png)
 
 
