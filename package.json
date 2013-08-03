@@ -1,6 +1,6 @@
 {
   "name": "ansi-styles",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ANSI escape codes for colorizing strings in the terminal",
   "keywords": [
     "ansi",
