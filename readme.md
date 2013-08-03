@@ -14,23 +14,15 @@ Install with [npm](https://npmjs.org/package/ansi-styles): `npm install --save a
 
 ## Example
 
-Generates the above screenshot.
-
 ```js
 var ansi = require('ansi-styles');
 
-console.log(ansi.green + 'Styles:' + ansi.reset + '\n');
-
-Object.keys(ansi).forEach(function (el) {
-	var style = ansi[el];
-
-	if (/^bg[^B]/.test(el)) {
-		style = ansi.black + style;
-	}
-
-	process.stdout.write(style + el + ansi.reset + ' ');
-});
+console.log(ansi.green[0] + 'Hello world!' + ansi.green[1]);
 ```
+
+## API
+
+Each style is an array of a start and end escape code.
 
 
 ## Styles
@@ -41,7 +33,6 @@ Object.keys(ansi).forEach(function (el) {
 - bold
 - italic
 - underline
-- blink
 - inverse
 - strikethrough
 
@@ -55,7 +46,6 @@ Object.keys(ansi).forEach(function (el) {
 - magenta
 - cyan
 - white
-- default
 - gray
 
 ### Background colors
@@ -68,7 +58,6 @@ Object.keys(ansi).forEach(function (el) {
 - bgMagenta
 - bgCyan
 - bgWhite
-- bgDefault
 
 
 ## License
