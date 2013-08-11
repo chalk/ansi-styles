@@ -5,6 +5,7 @@ module.exports = {
 	bold: ['\x1b[1m', '\x1b[22m'],
 	italic: ['\x1b[3m', '\x1b[23m'],
 	underline: ['\x1b[4m', '\x1b[24m'],
+  blink: ['\x1B[5m',  '\x1B[25m'],
 	inverse: ['\x1b[7m', '\x1b[27m'],
 	strikethrough: ['\x1b[9m', '\x1b[29m'],
 
