@@ -33,6 +33,7 @@ Each style is an array of a start and end escape code.
 - bold
 - italic
 - underline
+- blink
 - inverse
 - strikethrough
 
