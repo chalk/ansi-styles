@@ -1,6 +1,6 @@
 # ansi-styles [![Build Status](https://secure.travis-ci.org/sindresorhus/ansi-styles.png?branch=master)](http://travis-ci.org/sindresorhus/ansi-styles)
 
-> ANSI escape codes for colorizing strings in the terminal.
+> [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles) for colorizing strings in the terminal.
 
 You probably want the higher-level [chalk](https://github.com/sindresorhus/chalk) module for styling your strings.
 
