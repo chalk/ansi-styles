@@ -17,12 +17,12 @@ Install with [npm](https://npmjs.org/package/ansi-styles): `npm install --save a
 ```js
 var ansi = require('ansi-styles');
 
-console.log(ansi.green[0] + 'Hello world!' + ansi.green[1]);
+console.log(ansi.green.open + 'Hello world!' + ansi.green.close);
 ```
 
 ## API
 
-Each style is an array of a start and end escape code.
+Each style has an `open` and `close` property.
 
 
 ## Styles
@@ -62,4 +62,4 @@ Each style is an array of a start and end escape code.
 
 ## License
 
-MIT License • © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
