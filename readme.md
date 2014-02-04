@@ -58,6 +58,7 @@ Each style has an `open` and `close` property.
 - bgMagenta
 - bgCyan
 - bgWhite
+- bgGray
 
 
 ## License
