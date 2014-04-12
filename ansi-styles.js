@@ -27,7 +27,8 @@ var codes = {
 	bgBlue: [44, 49],
 	bgMagenta: [45, 49],
 	bgCyan: [46, 49],
-	bgWhite: [47, 49]
+	bgWhite: [47, 49],
+	bgGray: [100, 49]
 };
 
 Object.keys(codes).forEach(function (key) {
