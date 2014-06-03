@@ -35,6 +35,6 @@ var codes = {
 Object.keys(codes).forEach(function (key) {
 	var val = codes[key];
 	var style = styles[key] = {};
-	style.open = '\x1b[' + val[0] + 'm';
-	style.close = '\x1b[' + val[1] + 'm';
+	style.open = '\u001b[' + val[0] + 'm';
+	style.close = '\u001b[' + val[1] + 'm';
 });
