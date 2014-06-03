@@ -1,6 +1,6 @@
 # ansi-styles [![Build Status](https://travis-ci.org/sindresorhus/ansi-styles.svg?branch=master)](https://travis-ci.org/sindresorhus/ansi-styles)
 
-> [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles) for colorizing strings in the terminal.
+> [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles) for styling strings in the terminal
 
 You probably want the higher-level [chalk](https://github.com/sindresorhus/chalk) module for styling your strings.
 
@@ -9,7 +9,7 @@ You probably want the higher-level [chalk](https://github.com/sindresorhus/chalk
 
 ## Install
 
-```bash
+```sh
 $ npm install --save ansi-styles
 ```
 
@@ -35,11 +35,11 @@ Each style has an `open` and `close` property.
 - reset
 - bold
 - dim
-- italic
+- italic *(not widely supported)*
 - underline
 - inverse
 - hidden
-- strikethrough
+- strikethrough *(not widely supported)*
 
 ### Text colors
 
@@ -67,4 +67,4 @@ Each style has an `open` and `close` property.
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
