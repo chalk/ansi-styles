@@ -7,7 +7,7 @@ var ansi = require('./ansi-styles');
 Object.keys(ansi).forEach(function (el) {
 	var style = ansi[el].open;
 
-	if (el === 'reset') {
+	if (el === 'reset' || el === 'hidden') {
 		return;
 	}
 

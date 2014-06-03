@@ -34,9 +34,11 @@ Each style has an `open` and `close` property.
 
 - reset
 - bold
+- dim
 - italic
 - underline
 - inverse
+- hidden
 - strikethrough
 
 ### Text colors
