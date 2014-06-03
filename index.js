@@ -4,7 +4,7 @@ var styles = module.exports;
 var codes = {
 	reset: [0, 0],
 
-	bold: [1, 21],
+	bold: [1, 22], // 21 isn't widely supported and 22 does the same thing
 	dim: [2, 22],
 	italic: [3, 23],
 	underline: [4, 24],
