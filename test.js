@@ -21,6 +21,7 @@ it('should return ANSI escape codes', function () {
 	assert.equal(ansi.green.open, '\u001b[32m');
 	assert.equal(ansi.bgGreen.open, '\u001b[42m');
 	assert.equal(ansi.green.close, '\u001b[39m');
+	assert.equal(ansi.gray.open, ansi.grey.open);
 });
 
 it('should group related codes into categories', function () {

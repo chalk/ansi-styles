@@ -34,6 +34,9 @@ var styles = module.exports = {
 	}
 };
 
+// fix humans
+styles.colors.grey = styles.colors.gray;
+
 Object.keys(styles).forEach(function (groupName) {
 	var group = styles[groupName];
 
