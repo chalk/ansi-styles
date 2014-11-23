@@ -29,4 +29,10 @@ describe('ansiStyles()', function () {
 		assert.equal(ansi.bgColors.bgYellow, ansi.bgYellow);
 		assert.equal(ansi.modifiers.bold, ansi.bold);
 	});
+
+	it('should group related codes into categories', function () {
+		assert.equal(ansi.colors.magenta, ansi.magenta);
+		assert.equal(ansi.bgColors.bgYellow, ansi.bgYellow);
+		assert.equal(ansi.modifiers.bold, ansi.bold);
+	});
 });
