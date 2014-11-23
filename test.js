@@ -19,8 +19,8 @@ Object.keys(ansi).forEach(function (el) {
 
 describe('ansiStyles()', function () {
 	it('should return ANSI escape codes', function () {
-		assert.equal(ansi.green.open, '\x1b[32m');
-		assert.equal(ansi.bgGreen.open, '\x1b[42m');
-		assert.equal(ansi.green.close, '\x1b[39m');
+		assert.equal(ansi.green.open, '\u001b[32m');
+		assert.equal(ansi.bgGreen.open, '\u001b[42m');
+		assert.equal(ansi.green.close, '\u001b[39m');
 	});
 });
