@@ -17,16 +17,18 @@ Object.keys(ansi).forEach(function (el) {
 	process.stdout.write(style + el + ansi.reset.open + ansi.reset.close + ' ');
 });
 
-describe('ansiStyles()', function () {
-	it('should return ANSI escape codes', function () {
-		assert.equal(ansi.green.open, '\u001b[32m');
-		assert.equal(ansi.bgGreen.open, '\u001b[42m');
-		assert.equal(ansi.green.close, '\u001b[39m');
-	});
+it('should return ANSI escape codes', function () {
+	assert.equal(ansi.green.open, '\u001b[32m');
+	assert.equal(ansi.bgGreen.open, '\u001b[42m');
+	assert.equal(ansi.green.close, '\u001b[39m');
+});
 
-	it('should group related codes into categories', function () {
-		assert.equal(ansi.colors.magenta, ansi.magenta);
-		assert.equal(ansi.bgColors.bgYellow, ansi.bgYellow);
-		assert.equal(ansi.modifiers.bold, ansi.bold);
-	});
+it('should group related codes into categories', function () {
+	assert.equal(ansi.colors.magenta, ansi.magenta);
+	assert.equal(ansi.bgColors.bgYellow, ansi.bgYellow);
+	assert.equal(ansi.modifiers.bold, ansi.bold);
+});
+
+it('groups should not be enumerable', function () {
+	assert.equal(Object.keys(ansi).indexOf('modifiers'), -1);
 });

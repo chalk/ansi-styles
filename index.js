@@ -1,10 +1,8 @@
 'use strict';
-var styles = module.exports;
 
-var codes = {
-	reset: [0, 0],
-
+var styles = module.exports = {
 	modifiers: {
+		reset: [0, 0],
 		bold: [1, 22], // 21 isn't widely supported and 22 does the same thing
 		dim: [2, 22],
 		italic: [3, 23],
@@ -13,7 +11,6 @@ var codes = {
 		hidden: [8, 28],
 		strikethrough: [9, 29]
 	},
-
 	colors: {
 		black: [30, 39],
 		red: [31, 39],
@@ -25,7 +22,6 @@ var codes = {
 		white: [37, 39],
 		gray: [90, 39]
 	},
-
 	bgColors: {
 		bgBlack: [40, 49],
 		bgRed: [41, 49],
@@ -38,22 +34,20 @@ var codes = {
 	}
 };
 
-var makeStyle = function (code) {
-	return {
-		open: '\u001b[' + code[0] + 'm',
-		close: '\u001b[' + code[1] + 'm'
-	};
-};
+Object.keys(styles).forEach(function (groupName) {
+	var group = styles[groupName];
 
-Object.keys(codes).forEach(function (key) {
-	var val = codes[key];
-	if (typeof val == 'object') {
-		var group = styles[key] = {};
-		Object.keys(val).forEach(function (key) {
-			styles[key] = group[key] = makeStyle(val[key]);
-		});
-	}
-	else {
-		styles[key] = makeStyle(val);
-	}
+	Object.keys(group).forEach(function (styleName) {
+		var style = group[styleName];
+
+		styles[styleName] = group[styleName] = {
+			open: '\u001b[' + style[0] + 'm',
+			close: '\u001b[' + style[1] + 'm'
+		};
+	});
+
+	Object.defineProperty(styles, groupName, {
+		value: group,
+		enumerable: false
+	});
 });
