@@ -23,4 +23,10 @@ describe('ansiStyles()', function () {
 		assert.equal(ansi.bgGreen.open, '\u001b[42m');
 		assert.equal(ansi.green.close, '\u001b[39m');
 	});
+
+	it('should group related codes into categories', function () {
+		assert.equal(ansi.colors.magenta, ansi.magenta);
+		assert.equal(ansi.bgColors.bgYellow, ansi.bgYellow);
+		assert.equal(ansi.modifiers.bold, ansi.bold);
+	});
 });
