@@ -1,6 +1,6 @@
 'use strict';
 var assert = require('assert');
-var ansi = require('./');
+var ansi = require('./')();
 
 // generates the screenshot
 Object.keys(ansi).forEach(function (el) {
