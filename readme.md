@@ -9,7 +9,7 @@ You probably want the higher-level [chalk](https://github.com/chalk/chalk) modul
 
 ## Install
 
-```sh
+```
 $ npm install --save ansi-styles
 ```
 
