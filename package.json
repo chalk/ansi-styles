@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "ANSI escape codes for styling strings in the terminal",
   "license": "MIT",
-  "repository": "sindresorhus/ansi-styles",
+  "repository": "chalk/ansi-styles",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
