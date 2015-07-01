@@ -38,5 +38,5 @@ it('should not pollute other objects', function () {
 	var obj1 = require('./');
 	var obj2 = require('./');
 	obj1.foo = true;
-	assert.equal(!!obj2.foo, false);
+	assert.notEqual(obj1.foo, obj2.foo);
 });
