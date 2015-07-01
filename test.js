@@ -33,3 +33,10 @@ it('should group related codes into categories', function () {
 it('groups should not be enumerable', function () {
 	assert.equal(Object.keys(ansi).indexOf('modifiers'), -1);
 });
+
+it('should not pollute other objects', function () {
+	var obj1 = require('./');
+	var obj2 = require('./');
+	obj1.foo = true;
+	assert.equal(!!obj2.foo, false);
+});
