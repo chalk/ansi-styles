@@ -1,6 +1,6 @@
 'use strict';
 
-function assembleStyles () {
+function assembleStyles() {
 	var styles = {
 		modifiers: {
 			reset: [0, 0],
