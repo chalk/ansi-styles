@@ -1,4 +1,5 @@
 /* jshint mocha:true */
+/* global it */
 'use strict';
 
 var assert = require('assert');
