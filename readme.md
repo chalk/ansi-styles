@@ -81,6 +81,11 @@ console.log(ansi.colors.green.open);
 ```
 
 
+## Related
+
+- [ansi-escapes](https://github.com/sindresorhus/ansi-escapes) - ANSI escape codes for manipulating the terminal
+
+
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)
