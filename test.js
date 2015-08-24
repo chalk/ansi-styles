@@ -1,23 +1,20 @@
-/* jshint mocha:true */
-/* global it */
 'use strict';
-
 var assert = require('assert');
 var ansi = require('./');
 
 // generates the screenshot
-Object.keys(ansi).forEach(function (el) {
-	var style = ansi[el].open;
+Object.keys(ansi).forEach(function (x) {
+	var style = ansi[x].open;
 
-	if (el === 'reset' || el === 'hidden') {
+	if (x === 'reset' || x === 'hidden') {
 		return;
 	}
 
-	if (/^bg[^B]/.test(el)) {
+	if (/^bg[^B]/.test(x)) {
 		style = ansi.black.open + style;
 	}
 
-	process.stdout.write(style + el + ansi.reset.open + ansi.reset.close + ' ');
+	process.stdout.write(style + x + ansi.reset.open + ansi.reset.close + ' ');
 });
 
 it('should return ANSI escape codes', function () {
