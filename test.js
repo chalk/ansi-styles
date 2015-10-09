@@ -1,10 +1,9 @@
-'use strict';
-var assert = require('assert');
-var ansi = require('./');
+import test from 'ava';
+import ansi from './';
 
 // generates the screenshot
-Object.keys(ansi).forEach(function (x) {
-	var style = ansi[x].open;
+Object.keys(ansi).forEach(x => {
+	let style = ansi[x].open;
 
 	if (x === 'reset' || x === 'hidden') {
 		return;
@@ -17,26 +16,30 @@ Object.keys(ansi).forEach(function (x) {
 	process.stdout.write(style + x + ansi.reset.open + ansi.reset.close + ' ');
 });
 
-it('should return ANSI escape codes', function () {
-	assert.equal(ansi.green.open, '\u001b[32m');
-	assert.equal(ansi.bgGreen.open, '\u001b[42m');
-	assert.equal(ansi.green.close, '\u001b[39m');
-	assert.equal(ansi.gray.open, ansi.grey.open);
+test('should return ANSI escape codes', t => {
+	t.is(ansi.green.open, '\u001b[32m');
+	t.is(ansi.bgGreen.open, '\u001b[42m');
+	t.is(ansi.green.close, '\u001b[39m');
+	t.is(ansi.gray.open, ansi.grey.open);
+	t.end();
 });
 
-it('should group related codes into categories', function () {
-	assert.equal(ansi.colors.magenta, ansi.magenta);
-	assert.equal(ansi.bgColors.bgYellow, ansi.bgYellow);
-	assert.equal(ansi.modifiers.bold, ansi.bold);
+test('should group related codes into categories', t => {
+	t.is(ansi.colors.magenta, ansi.magenta);
+	t.is(ansi.bgColors.bgYellow, ansi.bgYellow);
+	t.is(ansi.modifiers.bold, ansi.bold);
+	t.end();
 });
 
-it('groups should not be enumerable', function () {
-	assert.equal(Object.keys(ansi).indexOf('modifiers'), -1);
+test('groups should not be enumerable', t => {
+	t.false(Object.keys(ansi).includes('modifiers'));
+	t.end();
 });
 
-it('should not pollute other objects', function () {
-	var obj1 = require('./');
-	var obj2 = require('./');
+test('should not pollute other objects', t => {
+	const obj1 = require('./');
+	const obj2 = require('./');
 	obj1.foo = true;
-	assert.notEqual(obj1.foo, obj2.foo);
+	t.not(obj1.foo, obj2.foo);
+	t.end();
 });
