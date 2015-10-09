@@ -17,7 +17,7 @@ $ npm install --save ansi-styles
 ## Usage
 
 ```js
-var ansi = require('ansi-styles');
+const ansi = require('ansi-styles');
 
 console.log(ansi.green.open + 'Hello world!' + ansi.green.close);
 ```
