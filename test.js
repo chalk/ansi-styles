@@ -2,19 +2,19 @@ import test from 'ava';
 import ansi from './';
 
 // generates the screenshot
-Object.keys(ansi).forEach(x => {
-	let style = ansi[x].open;
+for (const [key, val] of Object.entries(ansi)) {
+	let style = val.open;
 
-	if (x === 'reset' || x === 'hidden') {
-		return;
+	if (key === 'reset' || key === 'hidden') {
+		continue;
 	}
 
-	if (/^bg[^B]/.test(x)) {
+	if (/^bg[^B]/.test(key)) {
 		style = ansi.black.open + style;
 	}
 
-	process.stdout.write(style + x + ansi.reset.open + ansi.reset.close + ' ');
-});
+	process.stdout.write(style + key + ansi.reset.close + ' ');
+}
 
 test('should return ANSI escape codes', t => {
 	t.is(ansi.green.open, '\u001b[32m');
