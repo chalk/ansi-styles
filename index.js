@@ -111,9 +111,9 @@ function assembleStyles() {
 			styles.bgColor.ansi[key] = wrapAnsi16(suite.ansi16, 10);
 		}
 
-		if ('ansi' in suite) {
-			styles.color.ansi256[key] = wrapAnsi256(suite.ansi, 0);
-			styles.bgColor.ansi256[key] = wrapAnsi256(suite.ansi, 10);
+		if ('ansi256' in suite) {
+			styles.color.ansi256[key] = wrapAnsi256(suite.ansi256, 0);
+			styles.bgColor.ansi256[key] = wrapAnsi256(suite.ansi256, 10);
 		}
 
 		if ('rgb' in suite) {
