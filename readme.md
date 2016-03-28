@@ -89,7 +89,7 @@ console.log(style.color.green.open);
 ```
 
 ## [256 / 16 million (TrueColor) support](https://gist.github.com/XVilka/8346728)
-`ansi-styles` uses the [`color-convert`](https://github.com/MoOx/color-convert) package to allow for converting between various colors and ANSI escapes, with support for 256 and 16 million colors.
+`ansi-styles` uses the [`color-convert`](https://github.com/Qix-/color-convert) package to allow for converting between various colors and ANSI escapes, with support for 256 and 16 million colors.
 
 To use these, call the associated conversion function with the intended output, e.g.:
 
