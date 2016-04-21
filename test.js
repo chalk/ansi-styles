@@ -5,7 +5,7 @@ import style from './';
 for (const [key, val] of Object.entries(style)) {
 	let code = val.open;
 
-	if (key === 'reset' || key === 'hidden') {
+	if (key === 'reset' || key === 'hidden' || key === 'grey') {
 		continue;
 	}
 
