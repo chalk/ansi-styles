@@ -100,7 +100,7 @@ function assembleStyles() {
 	};
 
 	for (var key in colorConvert) {
-		if (!colorConvert.hasOwnProperty(key) || typeof colorConvert[key] !== 'object') {
+		if (!{}.hasOwnProperty.call(colorConvert, key) || typeof colorConvert[key] !== 'object') {
 			continue;
 		}
 

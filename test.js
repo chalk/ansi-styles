@@ -37,6 +37,7 @@ test('groups should not be enumerable', t => {
 test('don\'t pollute other objects', t => {
 	const obj1 = require('./');
 	const obj2 = require('./');
+
 	obj1.foo = true;
 	t.not(obj1.foo, obj2.foo);
 });
