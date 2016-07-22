@@ -1,15 +1,15 @@
 {
-  "name": "ansi-styles",
-  "version": "2.1.0",
-  "description": "ANSI escape codes for styling strings in the terminal",
+  "name": "chalk-extra-styles",
+  "version": "0.0.1",
+  "description": "A bunch of extra color codes for chalk.",
   "license": "MIT",
-  "repository": "chalk/ansi-styles",
+  "repository": "helderroem/chalk-extra-styles",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
+    "name": "Robin Marr",
+    "email": "robinemarr@gmail.com"
   },
   "maintainers": [
+    "Robin Marr <robinemarr@gmail.com>",
     "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
     "Joshua Boy Nicolai Appelman <joshua@jbna.nl> (jbna.nl)",
     "Josh Junon <i.am.qix@gmail.com> (github.com/qix-)"

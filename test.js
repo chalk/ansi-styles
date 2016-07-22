@@ -1,25 +1,41 @@
 import test from 'ava';
 import style from './';
 
-// generates the screenshot
-for (const [key, val] of Object.entries(style)) {
-	let code = val.open;
+function generateScreenshot() {
+	const lineLength = process.env.COLUMNS;
+	var current = 0;
+	for (const [key, val] of Object.entries(style)) {
+		let code = val.open;
 
-	if (key === 'reset' || key === 'hidden' || key === 'grey') {
-		continue;
+		if (key === 'reset' || key === 'hidden') {
+			continue;
+		}
+
+		if (contrast(code)) {
+			code = style.black.open + code;
+		}
+
+		const entry = `${code}${key}${style.reset.close} `;
+		current += entry.length;
+		if (current > lineLength) {
+			process.stdout.write('\n');
+			current = entry.length;
+		}
+		process.stdout.write(entry);
 	}
-
-	if (/^bg[^B]/.test(key)) {
-		code = style.black.open + code;
-	}
-
-	process.stdout.write(code + key + style.reset.close + ' ');
 }
 
-test('return ANSI escape codes', t => {
-	t.is(style.green.open, '\u001b[32m');
-	t.is(style.bgGreen.open, '\u001b[42m');
-	t.is(style.green.close, '\u001b[39m');
+function contrast(code) {
+	const [junk1, junk2, r, g, b] = code.split(';'); // eslint-disable-line no-unused-vars
+	return Math.round(((parseInt(r, 10) * 299) + (parseInt(g, 10) * 587) + (parseInt(b, 10) * 114)) / 1000) > 125;
+}
+
+generateScreenshot();
+
+test('return Full color escape codes', t => {
+	t.is(style.green.open, '\u001b[38;2;28;172;120m');
+	t.is(style.bgGreen.open, '\u001b[48;2;28;172;120m');
+	t.is(style.green.close, '\u001b[0m');
 	t.is(style.gray.open, style.grey.open);
 });
 
