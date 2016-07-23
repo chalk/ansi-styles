@@ -1,9 +1,6 @@
 'use strict';
-var join = require('path').join;
-
 var colorConvert = require('color-convert');
-
-var colorCodes = require(join(__dirname, 'styles', 'crayon.json'));
+var colorCodes = require('./styles/ansi.json');
 
 function wrapAnsi16(fn, offset) {
 	return function () {
