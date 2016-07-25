@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"color": {
 		"aliceblue": ["38;2;240;248;255", 0],
 		"antiquewhite": ["38;2;250;235;215", 0],
