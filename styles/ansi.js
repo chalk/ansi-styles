@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"color": {
 		"black": [30, 39],
 		"red": [31, 39],
