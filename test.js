@@ -2,8 +2,8 @@ import test from 'ava';
 import style from './';
 
 // generates the screenshot
-for (const [key, val] of Object.entries(style)) {
-	let code = val.open;
+for (const key of Object.keys(style)) {
+	let code = style[key].open;
 
 	if (key === 'reset' || key === 'hidden' || key === 'grey') {
 		continue;
