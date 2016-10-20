@@ -19,7 +19,8 @@ $ npm install --save ansi-styles
 ```js
 const style = require('ansi-styles');
 
-console.log(style.green.open + 'Hello world!' + style.green.close);
+console.log(`${style.green.open}Hello world!${style.green.close}`);
+
 
 // color conversion between 16/256/truecolor
 // NOTE: if conversion goes to 16 colors or 256 colors, the original color
@@ -75,7 +76,7 @@ Each style has an `open` and `close` property.
 
 ## Advanced usage
 
-By default you get a map of styles, but the styles are also available as groups. They are non-enumerable so they don't show up unless you access them explicitly. This makes it easier to expose only a subset in a higher-level module.
+By default, you get a map of styles, but the styles are also available as groups. They are non-enumerable so they don't show up unless you access them explicitly. This makes it easier to expose only a subset in a higher-level module.
 
 - `style.modifier`
 - `style.color`
@@ -88,10 +89,12 @@ By default you get a map of styles, but the styles are also available as groups.
 console.log(style.color.green.open);
 ```
 
+
 ## [256 / 16 million (TrueColor) support](https://gist.github.com/XVilka/8346728)
+
 `ansi-styles` uses the [`color-convert`](https://github.com/Qix-/color-convert) package to allow for converting between various colors and ANSI escapes, with support for 256 and 16 million colors.
 
-To use these, call the associated conversion function with the intended output, e.g.:
+To use these, call the associated conversion function with the intended output, for example:
 
 ```js
 style.color.ansi.rgb(100, 200, 15); // RGB to 16 color ansi foreground code
@@ -104,6 +107,7 @@ style.color.ansi16m.hex('#C0FFEE'); // Hex (RGB) to 16 million color foreground 
 style.bgColor.ansi16m.hex('#C0FFEE'); // Hex (RGB) to 16 million color background code
 ```
 
+
 ## Related
 
 - [ansi-escapes](https://github.com/sindresorhus/ansi-escapes) - ANSI escape codes for manipulating the terminal
@@ -111,4 +115,4 @@ style.bgColor.ansi16m.hex('#C0FFEE'); // Hex (RGB) to 16 million color backgroun
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

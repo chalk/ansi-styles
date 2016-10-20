@@ -1,30 +1,23 @@
 'use strict';
-var colorConvert = require('color-convert');
+const colorConvert = require('color-convert');
 
-function wrapAnsi16(fn, offset) {
-	return function () {
-		var code = fn.apply(colorConvert, arguments);
-		return '\u001b[' + (code + offset) + 'm';
-	};
-}
+const wrapAnsi16 = (fn, offset) => function () {
+	const code = fn.apply(colorConvert, arguments);
+	return `\u001B[${code + offset}m`;
+};
 
-function wrapAnsi256(fn, offset) {
-	return function () {
-		var code = fn.apply(colorConvert, arguments);
-		return '\u001b[' + (38 + offset) + ';5;' + code + 'm';
-	};
-}
+const wrapAnsi256 = (fn, offset) => function () {
+	const code = fn.apply(colorConvert, arguments);
+	return `\u001B[${38 + offset};5;${code}m`;
+};
 
-function wrapAnsi16m(fn, offset) {
-	return function () {
-		var rgb = fn.apply(colorConvert, arguments);
-		return '\u001b[' + (38 + offset) + ';2;' +
-			rgb[0] + ';' + rgb[1] + ';' + rgb[2] + 'm';
-	};
-}
+const wrapAnsi16m = (fn, offset) => function () {
+	const rgb = fn.apply(colorConvert, arguments);
+	return `\u001B[${38 + offset};2;${rgb[0]};${rgb[1]};${rgb[2]}m`;
+};
 
 function assembleStyles() {
-	var styles = {
+	const styles = {
 		modifier: {
 			reset: [0, 0],
 			// 21 isn't widely supported and 22 does the same thing
@@ -62,15 +55,15 @@ function assembleStyles() {
 	// fix humans
 	styles.color.grey = styles.color.gray;
 
-	Object.keys(styles).forEach(function (groupName) {
-		var group = styles[groupName];
+	Object.keys(styles).forEach(groupName => {
+		const group = styles[groupName];
 
-		Object.keys(group).forEach(function (styleName) {
-			var style = group[styleName];
+		Object.keys(group).forEach(styleName => {
+			const style = group[styleName];
 
 			styles[styleName] = group[styleName] = {
-				open: '\u001b[' + style[0] + 'm',
-				close: '\u001b[' + style[1] + 'm'
+				open: `\u001B[${style[0]}m`,
+				close: `\u001B[${style[1]}m`
 			};
 		});
 
@@ -80,12 +73,10 @@ function assembleStyles() {
 		});
 	});
 
-	function rgb2rgb(r, g, b) {
-		return [r, g, b];
-	}
+	const rgb2rgb = (r, g, b) => [r, g, b];
 
-	styles.color.close = '\u001b[39m';
-	styles.bgColor.close = '\u001b[49m';
+	styles.color.close = '\u001B[39m';
+	styles.bgColor.close = '\u001B[49m';
 
 	styles.color.ansi = {};
 	styles.color.ansi256 = {};
@@ -99,12 +90,12 @@ function assembleStyles() {
 		rgb: wrapAnsi16m(rgb2rgb, 10)
 	};
 
-	for (var key in colorConvert) {
-		if (!{}.hasOwnProperty.call(colorConvert, key) || typeof colorConvert[key] !== 'object') {
+	for (const key of Object.keys(colorConvert)) {
+		if (typeof colorConvert[key] !== 'object') {
 			continue;
 		}
 
-		var suite = colorConvert[key];
+		const suite = colorConvert[key];
 
 		if ('ansi16' in suite) {
 			styles.color.ansi[key] = wrapAnsi16(suite.ansi16, 0);
