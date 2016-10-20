@@ -2,7 +2,7 @@ import test from 'ava';
 import style from './';
 
 // generates the screenshot
-for (const [key, val] of Object.entries(style)) {
+for (const [key, val] of Object.entries(style)) { // eslint-disable-line no-use-extend-native/no-use-extend-native
 	let code = val.open;
 
 	if (key === 'reset' || key === 'hidden' || key === 'grey') {
