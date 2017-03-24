@@ -50,9 +50,10 @@
   },
   "devDependencies": {
     "ava": "*",
+    "babel-polyfill": "^6.23.0",
     "xo": "*"
   },
-  "xo": {
-    "esnext": true
+  "ava": {
+    "require": "babel-polyfill"
   }
 }
