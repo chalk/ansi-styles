@@ -21,7 +21,7 @@ function assembleStyles() {
 		modifier: {
 			reset: [0, 0],
 			// 21 isn't widely supported and 22 does the same thing
-			bold: [1, 22],
+			bold: [1, [0, 22]],
 			dim: [2, 22],
 			italic: [3, 23],
 			underline: [4, 24],
@@ -80,9 +80,15 @@ function assembleStyles() {
 		Object.keys(group).forEach(styleName => {
 			const style = group[styleName];
 
+			style.map(function (v, i) {
+				return style[i] = Array.isArray(v) ? v : [v];
+			});
+
+			console.log(style);
+
 			styles[styleName] = {
-				open: `\u001B[${style[0]}m`,
-				close: `\u001B[${style[1]}m`
+				open: `\u001B[${style[0].join(';')}m`,
+				close: `\u001B[${style[1].join(';')}m`
 			};
 
 			Object.defineProperty(styles[styleName], 'raw', {
