@@ -40,7 +40,7 @@ function assembleStyles() {
 			white: [37, 39],
 			gray: [90, 39],
 
-			// bright color
+			// Bright color
 			redBright: [91, 39],
 			greenBright: [92, 39],
 			yellowBright: [93, 39],
@@ -59,7 +59,7 @@ function assembleStyles() {
 			bgCyan: [46, 49],
 			bgWhite: [47, 49],
 
-			// bright color
+			// Bright color
 			bgBlackBright: [100, 49],
 			bgRedBright: [101, 49],
 			bgGreenBright: [102, 49],
@@ -71,7 +71,7 @@ function assembleStyles() {
 		}
 	};
 
-	// fix humans
+	// Fix humans
 	styles.color.grey = styles.color.gray;
 
 	Object.keys(styles).forEach(groupName => {
@@ -80,10 +80,12 @@ function assembleStyles() {
 		Object.keys(group).forEach(styleName => {
 			const style = group[styleName];
 
-			styles[styleName] = group[styleName] = {
+			styles[styleName] = {
 				open: `\u001B[${style[0]}m`,
 				close: `\u001B[${style[1]}m`
 			};
+
+			group[styleName] = styles[styleName];
 		});
 
 		Object.defineProperty(styles, groupName, {
