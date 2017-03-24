@@ -84,11 +84,6 @@ function assembleStyles() {
 				open: `\u001B[${style[0]}m`,
 				close: `\u001B[${style[1]}m`
 			};
-
-			Object.defineProperty(styles[styleName], 'data', {
-				value: style,
-				enumerable: false
-			});
 		});
 
 		Object.defineProperty(styles, groupName, {
