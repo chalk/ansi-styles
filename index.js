@@ -40,14 +40,14 @@ function assembleStyles() {
 			white: [37, 39],
 			gray: [90, 39],
 
-			// real color when use \u001b[0m
-			redPlus: [91, 39],
-			greenPlus: [92, 39],
-			yellowPlus: [93, 39],
-			bluePlus: [94, 39],
-			magentaPlus: [95, 39],
-			cyanPlus: [96, 39],
-			whitePlus: [97, 39]
+			// bright color
+			redBright: [91, 39],
+			greenBright: [92, 39],
+			yellowBright: [93, 39],
+			blueBright: [94, 39],
+			magentaBright: [95, 39],
+			cyanBright: [96, 39],
+			whiteBright: [97, 39]
 		},
 		bgColor: {
 			bgBlack: [40, 49],
@@ -59,15 +59,15 @@ function assembleStyles() {
 			bgCyan: [46, 49],
 			bgWhite: [47, 49],
 
-			// real color when use \u001b[0m
-			bgBlackPlus: [100, 49],
-			bgRedPlus: [101, 49],
-			bgGreenPlus: [102, 49],
-			bgYellowPlus: [103, 49],
-			bgBluePlus: [104, 49],
-			bgMagentaPlus: [105, 49],
-			bgCyanPlus: [106, 49],
-			bgWhitePlus: [107, 49]
+			// bright color
+			bgBlackBright: [100, 49],
+			bgRedBright: [101, 49],
+			bgGreenBright: [102, 49],
+			bgYellowBright: [103, 49],
+			bgBlueBright: [104, 49],
+			bgMagentaBright: [105, 49],
+			bgCyanBright: [106, 49],
+			bgWhiteBright: [107, 49]
 		}
 	};
 
