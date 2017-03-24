@@ -38,7 +38,16 @@ function assembleStyles() {
 			magenta: [35, 39],
 			cyan: [36, 39],
 			white: [37, 39],
-			gray: [90, 39]
+			gray: [90, 39],
+
+			// bright color
+			redBright: [91, 39],
+			greenBright: [92, 39],
+			yellowBright: [93, 39],
+			blueBright: [94, 39],
+			magentaBright: [95, 39],
+			cyanBright: [96, 39],
+			whiteBright: [97, 39]
 		},
 		bgColor: {
 			bgBlack: [40, 49],
@@ -48,7 +57,17 @@ function assembleStyles() {
 			bgBlue: [44, 49],
 			bgMagenta: [45, 49],
 			bgCyan: [46, 49],
-			bgWhite: [47, 49]
+			bgWhite: [47, 49],
+
+			// bright color
+			bgBlackBright: [100, 49],
+			bgRedBright: [101, 49],
+			bgGreenBright: [102, 49],
+			bgYellowBright: [103, 49],
+			bgBlueBright: [104, 49],
+			bgMagentaBright: [105, 49],
+			bgCyanBright: [106, 49],
+			bgWhiteBright: [107, 49]
 		}
 	};
 
