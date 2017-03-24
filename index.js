@@ -84,8 +84,6 @@ function assembleStyles() {
 				return style[i] = Array.isArray(v) ? v : [v];
 			});
 
-			console.log(style);
-
 			styles[styleName] = {
 				open: `\u001B[${style[0].join(';')}m`,
 				close: `\u001B[${style[1].join(';')}m`
