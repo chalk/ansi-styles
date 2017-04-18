@@ -62,6 +62,15 @@ Each style has an `open` and `close` property.
 - `white`
 - `gray`
 
+- `blackBright`
+- `redBright`
+- `greenBright`
+- `yellowBright`
+- `blueBright`
+- `magentaBright`
+- `cyanBright`
+- `whiteBright`
+
 ### Background colors
 
 - `bgBlack`
@@ -73,6 +82,14 @@ Each style has an `open` and `close` property.
 - `bgCyan`
 - `bgWhite`
 
+- `bgBlackBright`
+- `bgRedBright`
+- `bgGreenBright`
+- `bgYellowBright`
+- `bgBlueBright`
+- `bgMagentaBright`
+- `bgCyanBright`
+- `bgWhiteBright`
 
 ## Advanced usage
 
