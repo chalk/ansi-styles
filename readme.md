@@ -10,7 +10,7 @@ You probably want the higher-level [chalk](https://github.com/chalk/chalk) modul
 ## Install
 
 ```
-$ npm install --save ansi-styles
+$ npm install ansi-styles
 ```
 
 
@@ -22,8 +22,8 @@ const style = require('ansi-styles');
 console.log(`${style.green.open}Hello world!${style.green.close}`);
 
 
-// color conversion between 16/256/truecolor
-// NOTE: if conversion goes to 16 colors or 256 colors, the original color
+// Color conversion between 16/256/truecolor
+// NOTE: If conversion goes to 16 colors or 256 colors, the original color
 //       may be degraded to fit that color palette. This means terminals
 //       that do not support 16 million colors will best-match the
 //       original color.
@@ -44,11 +44,11 @@ Each style has an `open` and `close` property.
 - `reset`
 - `bold`
 - `dim`
-- `italic` *(not widely supported)*
+- `italic` *(Not widely supported)*
 - `underline`
 - `inverse`
 - `hidden`
-- `strikethrough` *(not widely supported)*
+- `strikethrough` *(Not widely supported)*
 
 ### Colors
 
@@ -61,7 +61,6 @@ Each style has an `open` and `close` property.
 - `cyan`
 - `white`
 - `gray`
-
 - `blackBright`
 - `redBright`
 - `greenBright`
@@ -81,7 +80,6 @@ Each style has an `open` and `close` property.
 - `bgMagenta`
 - `bgCyan`
 - `bgWhite`
-
 - `bgBlackBright`
 - `bgRedBright`
 - `bgGreenBright`
@@ -98,7 +96,6 @@ By default, you get a map of styles, but the styles are also available as groups
 - `style.modifier`
 - `style.color`
 - `style.bgColor`
-
 
 ###### Example
 
@@ -130,6 +127,12 @@ style.bgColor.ansi16m.hex('#C0FFEE'); // Hex (RGB) to 16 million color backgroun
 - [ansi-escapes](https://github.com/sindresorhus/ansi-escapes) - ANSI escape codes for manipulating the terminal
 
 
+## Maintainers
+
+- [Sindre Sorhus](https://github.com/sindresorhus)
+- [Josh Junon](https://github.com/qix-)
+
+
 ## License
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+MIT
