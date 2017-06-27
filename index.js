@@ -74,10 +74,10 @@ function assembleStyles() {
 	// Fix humans
 	styles.color.grey = styles.color.gray;
 
-	Object.keys(styles).forEach(groupName => {
+	for (const groupName of Object.keys(styles)) {
 		const group = styles[groupName];
 
-		Object.keys(group).forEach(styleName => {
+		for (const styleName of Object.keys(group)) {
 			const style = group[styleName];
 
 			styles[styleName] = {
@@ -86,13 +86,13 @@ function assembleStyles() {
 			};
 
 			group[styleName] = styles[styleName];
-		});
+		}
 
 		Object.defineProperty(styles, groupName, {
 			value: group,
 			enumerable: false
 		});
-	});
+	}
 
 	const rgb2rgb = (r, g, b) => [r, g, b];
 
@@ -137,6 +137,7 @@ function assembleStyles() {
 	return styles;
 }
 
+// Make the export immutable
 Object.defineProperty(module, 'exports', {
 	enumerable: true,
 	get: assembleStyles
