@@ -60,8 +60,7 @@ Each style has an `open` and `close` property.
 - `magenta`
 - `cyan`
 - `white`
-- `gray`
-- `blackBright`
+- `gray` ("bright black")
 - `redBright`
 - `greenBright`
 - `yellowBright`
