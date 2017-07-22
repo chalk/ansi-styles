@@ -98,8 +98,7 @@ function assembleStyles() {
 
 		Object.defineProperty(styles, 'codes', {
 			value: codes,
-			enumerable: false,
-			configurable: true
+			enumerable: false
 		});
 	}
 
