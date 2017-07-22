@@ -82,3 +82,11 @@ test('16/256/16m color close escapes', t => {
 	t.is(style.color.close, '\u001B[39m');
 	t.is(style.bgColor.close, '\u001B[49m');
 });
+
+test('export raw ANSI escape codes', t => {
+	t.is(style.codes.get(0), 0);
+	t.is(style.codes.get(1), 22);
+	t.is(style.codes.get(91), 39);
+	t.is(style.codes.get(40), 49);
+	t.is(style.codes.get(100), 49);
+});
