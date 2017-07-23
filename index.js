@@ -17,6 +17,7 @@ const wrapAnsi16m = (fn, offset) => function () {
 };
 
 function assembleStyles() {
+	const codes = new Map();
 	const styles = {
 		modifier: {
 			reset: [0, 0],
@@ -86,10 +87,17 @@ function assembleStyles() {
 			};
 
 			group[styleName] = styles[styleName];
+
+			codes.set(style[0], style[1]);
 		}
 
 		Object.defineProperty(styles, groupName, {
 			value: group,
+			enumerable: false
+		});
+
+		Object.defineProperty(styles, 'codes', {
+			value: codes,
 			enumerable: false
 		});
 	}
