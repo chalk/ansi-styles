@@ -88,6 +88,7 @@ Each style has an `open` and `close` property.
 - `bgCyanBright`
 - `bgWhiteBright`
 
+
 ## Advanced usage
 
 By default, you get a map of styles, but the styles are also available as groups. They are non-enumerable so they don't show up unless you access them explicitly. This makes it easier to expose only a subset in a higher-level module.
@@ -100,6 +101,15 @@ By default, you get a map of styles, but the styles are also available as groups
 
 ```js
 console.log(style.color.green.open);
+```
+
+The raw ANSI escape codes used to create the styles is available under `style.codes` which returns a `Map` with the open codes as keys and close codes as values.
+
+###### Example
+
+```js
+console.log(style.codes.get(36));
+//=> 39
 ```
 
 
