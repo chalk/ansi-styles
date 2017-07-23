@@ -1,6 +1,6 @@
 {
 	"name": "ansi-styles",
-	"version": "3.1.0",
+	"version": "3.2.0",
 	"description": "ANSI escape codes for styling strings in the terminal",
 	"license": "MIT",
 	"repository": "chalk/ansi-styles",
