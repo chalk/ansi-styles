@@ -103,7 +103,7 @@ By default, you get a map of styles, but the styles are also available as groups
 console.log(style.color.green.open);
 ```
 
-The raw ANSI escape codes used to create the styles is available under `style.codes` which returns a `Map` with the open codes as keys and close codes as values.
+Raw escape codes (i.e. without the CSI escape prefix `\x1b[` and render mode postfix `m`) are available under `style.codes`, which returns a `Map` with the open codes as keys and close codes as values.
 
 ###### Example
 
