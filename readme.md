@@ -19,7 +19,15 @@ $ npm install ansi-styles
 ```js
 const style = require('ansi-styles');
 
+// Property syntax:
 console.log(`${style.green.open}Hello world!${style.green.close}`);
+
+// Function syntax:
+console.log(style.green('Hello world!'));
+
+// You can nest them as well!
+console.log(`${style.green.open}${style.bold.open}Hello world!${style.bold.close}${style.green.close}`);
+console.log(style.green(style.bold('Hello world!')));
 
 
 // Color conversion between 16/256/truecolor
@@ -34,7 +42,7 @@ console.log(style.color.ansi16m.hex('#ABCDEF') + 'Hello world!' + style.color.cl
 
 ## API
 
-Each style has an `open` and `close` property.
+Each style is a function that takes infinite number of arguments, also `open` and `close` properties to style strings manually.
 
 
 ## Styles
