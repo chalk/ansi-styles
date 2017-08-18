@@ -86,8 +86,8 @@ function assembleStyles() {
 				close: `\u001B[${style[1]}m`
 			};
 
-			styles[styleName] = () => {
-				return tags.open + [].slice.call(arguments).join(' ') + tags.close};
+			styles[styleName] = function () {
+				return tags.open + [].slice.call(arguments).join(' ') + tags.close;
 			};
 
 			styles[styleName].open = tags.open;
