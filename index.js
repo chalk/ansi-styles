@@ -81,17 +81,17 @@ function assembleStyles() {
 		for (const styleName of Object.keys(group)) {
 			const style = group[styleName];
 
-			let tags = {
+			const tags = {
 				open: `\u001B[${style[0]}m`,
 				close: `\u001B[${style[1]}m`
 			};
 
-			styles[styleName] = (...str) => {
-				return `${tags.open}${str.join(' ')}${tags.close}`
-			}
+			styles[styleName] = () => {
+				return tags.open + [].slice.call(arguments).join(' ') + tags.close};
+			};
 
-			styles[styleName].open = tags.open
-			styles[styleName].close = tags.close
+			styles[styleName].open = tags.open;
+			styles[styleName].close = tags.close;
 
 			group[styleName] = styles[styleName];
 
