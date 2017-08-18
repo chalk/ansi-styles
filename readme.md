@@ -25,7 +25,7 @@ console.log(`${style.green.open}Hello world!${style.green.close}`);
 // Function syntax:
 console.log(style.green('Hello world!'));
 
-// You can stack them as well!
+// You can nest them as well!
 console.log(`${style.green.open}${style.bold.open}Hello world!${style.bold.close}${style.green.close}`);
 console.log(style.green(style.bold('Hello world!')));
 
