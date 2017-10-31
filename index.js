@@ -103,24 +103,46 @@ function assembleStyles() {
 	}
 
 	const rgb2rgb = (r, g, b) => [r, g, b];
+	const keyword2rgb = keyword => {
+		const rgb = colorConvert.keyword.rgb(keyword);
+		if (!rgb) {
+			throw new Error(`Invalid arguments provided to keyword: ${keyword}`);
+		}
+		return rgb;
+	};
+	const keyword2ansi = keyword => colorConvert.rgb.ansi16(keyword2rgb(keyword));
+	const keyword2ansi256 = keyword => colorConvert.rgb.ansi256(keyword2rgb(keyword));
 
 	styles.color.close = '\u001B[39m';
 	styles.bgColor.close = '\u001B[49m';
 
-	styles.color.ansi = {};
-	styles.color.ansi256 = {};
+	styles.color.ansi = {
+		keyword: wrapAnsi16(keyword2ansi, 0)
+	};
+	styles.color.ansi256 = {
+		keyword: wrapAnsi256(keyword2ansi256, 0)
+	};
 	styles.color.ansi16m = {
+		keyword: wrapAnsi16m(keyword2rgb, 0),
 		rgb: wrapAnsi16m(rgb2rgb, 0)
 	};
 
-	styles.bgColor.ansi = {};
-	styles.bgColor.ansi256 = {};
+	styles.bgColor.ansi = {
+		keyword: wrapAnsi16(keyword2ansi, 10)
+	};
+	styles.bgColor.ansi256 = {
+		keyword: wrapAnsi256(keyword2ansi256, 10)
+	};
 	styles.bgColor.ansi16m = {
+		keyword: wrapAnsi16m(keyword2rgb, 10),
 		rgb: wrapAnsi16m(rgb2rgb, 10)
 	};
 
 	for (const key of Object.keys(colorConvert)) {
 		if (typeof colorConvert[key] !== 'object') {
+			continue;
+		}
+		if (key === 'keyword') {
 			continue;
 		}
 

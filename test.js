@@ -78,6 +78,18 @@ test('support conversion to ansi (16 million colors)', t => {
 	t.is(style.bgColor.ansi16m.hex('#FF00FF'), '\u001B[48;2;255;0;255m');
 });
 
+test('supports css keywords', t => {
+	t.is(style.color.ansi.keyword('red'), '\u001B[91m');
+	t.is(style.color.ansi256.keyword('red'), '\u001B[38;5;196m');
+	t.is(style.color.ansi16m.keyword('red'), '\u001B[38;2;255;0;0m');
+});
+
+test('throw meaningful error for invalid css keywords', t => {
+	t.throws(() => style.color.ansi.keyword('qwerty'), 'Invalid arguments provided to keyword: qwerty');
+	t.throws(() => style.color.ansi256.keyword('qwerty'), 'Invalid arguments provided to keyword: qwerty');
+	t.throws(() => style.color.ansi16m.keyword('qwerty'), 'Invalid arguments provided to keyword: qwerty');
+});
+
 test('16/256/16m color close escapes', t => {
 	t.is(style.color.close, '\u001B[39m');
 	t.is(style.bgColor.close, '\u001B[49m');
