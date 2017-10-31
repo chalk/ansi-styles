@@ -1,18 +1,27 @@
 'use strict';
 const colorConvert = require('color-convert');
 
-const wrapAnsi16 = (fn, offset) => function () {
+const wrapAnsi16 = (key, fn, offset) => function () {
+	if (key === 'keyword' && colorConvert.keyword.rgb.apply(colorConvert, arguments) === undefined) {
+		throw new Error(`Invalid arguments provided to ${key}: ${Array.from(arguments)}`);
+	}
 	const code = fn.apply(colorConvert, arguments);
 	return `\u001B[${code + offset}m`;
 };
 
-const wrapAnsi256 = (fn, offset) => function () {
+const wrapAnsi256 = (key, fn, offset) => function () {
+	if (key === 'keyword' && colorConvert.keyword.rgb.apply(colorConvert, arguments) === undefined) {
+		throw new Error(`Invalid arguments provided to ${key}: ${Array.from(arguments)}`);
+	}
 	const code = fn.apply(colorConvert, arguments);
 	return `\u001B[${38 + offset};5;${code}m`;
 };
 
-const wrapAnsi16m = (fn, offset) => function () {
+const wrapAnsi16m = (key, fn, offset) => function () {
 	const rgb = fn.apply(colorConvert, arguments);
+	if (rgb === null || rgb === undefined) {
+		throw new Error(`Invalid arguments provided to ${key}: ${Array.from(arguments)}`);
+	}
 	return `\u001B[${38 + offset};2;${rgb[0]};${rgb[1]};${rgb[2]}m`;
 };
 
@@ -110,13 +119,13 @@ function assembleStyles() {
 	styles.color.ansi = {};
 	styles.color.ansi256 = {};
 	styles.color.ansi16m = {
-		rgb: wrapAnsi16m(rgb2rgb, 0)
+		rgb: wrapAnsi16m('rgb', rgb2rgb, 0)
 	};
 
 	styles.bgColor.ansi = {};
 	styles.bgColor.ansi256 = {};
 	styles.bgColor.ansi16m = {
-		rgb: wrapAnsi16m(rgb2rgb, 10)
+		rgb: wrapAnsi16m('rgb', rgb2rgb, 10)
 	};
 
 	for (const key of Object.keys(colorConvert)) {
@@ -127,18 +136,18 @@ function assembleStyles() {
 		const suite = colorConvert[key];
 
 		if ('ansi16' in suite) {
-			styles.color.ansi[key] = wrapAnsi16(suite.ansi16, 0);
-			styles.bgColor.ansi[key] = wrapAnsi16(suite.ansi16, 10);
+			styles.color.ansi[key] = wrapAnsi16(key, suite.ansi16, 0);
+			styles.bgColor.ansi[key] = wrapAnsi16(key, suite.ansi16, 10);
 		}
 
 		if ('ansi256' in suite) {
-			styles.color.ansi256[key] = wrapAnsi256(suite.ansi256, 0);
-			styles.bgColor.ansi256[key] = wrapAnsi256(suite.ansi256, 10);
+			styles.color.ansi256[key] = wrapAnsi256(key, suite.ansi256, 0);
+			styles.bgColor.ansi256[key] = wrapAnsi256(key, suite.ansi256, 10);
 		}
 
 		if ('rgb' in suite) {
-			styles.color.ansi16m[key] = wrapAnsi16m(suite.rgb, 0);
-			styles.bgColor.ansi16m[key] = wrapAnsi16m(suite.rgb, 10);
+			styles.color.ansi16m[key] = wrapAnsi16m(key, suite.rgb, 0);
+			styles.bgColor.ansi16m[key] = wrapAnsi16m(key, suite.rgb, 10);
 		}
 	}
 
