@@ -42,7 +42,8 @@
 		"text"
 	],
 	"dependencies": {
-		"color-convert": "^1.9.0"
+		"color-convert": "^1.9.0",
+		"resolve-from": "^4.0.0"
 	},
 	"devDependencies": {
 		"ava": "*",

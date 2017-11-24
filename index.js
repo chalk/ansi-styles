@@ -102,19 +102,24 @@ function assembleStyles() {
 		});
 	}
 
+	const ansi2ansi = n => n;
 	const rgb2rgb = (r, g, b) => [r, g, b];
 
 	styles.color.close = '\u001B[39m';
 	styles.bgColor.close = '\u001B[49m';
 
 	styles.color.ansi = {};
-	styles.color.ansi256 = {};
+	styles.color.ansi256 = {
+		ansi256: wrapAnsi256(ansi2ansi, 0)
+	};
 	styles.color.ansi16m = {
 		rgb: wrapAnsi16m(rgb2rgb, 0)
 	};
 
 	styles.bgColor.ansi = {};
-	styles.bgColor.ansi256 = {};
+	styles.bgColor.ansi256 = {
+		ansi256: wrapAnsi256(ansi2ansi, 10)
+	};
 	styles.bgColor.ansi16m = {
 		rgb: wrapAnsi16m(rgb2rgb, 10)
 	};
