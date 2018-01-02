@@ -1,21 +1,6 @@
 import test from 'ava';
 import style from '.';
 
-// Generates the screenshot
-for (const [key, val] of Object.entries(style)) {
-	let code = val.open;
-
-	if (key === 'reset' || key === 'hidden' || key === 'grey') {
-		continue;
-	}
-
-	if (/^bg[^B]/.test(key)) {
-		code = style.black.open + code;
-	}
-
-	process.stdout.write(code + key + style.reset.close + ' ');
-}
-
 test('return ANSI escape codes', t => {
 	t.is(style.green.open, '\u001B[32m');
 	t.is(style.bgGreen.open, '\u001B[42m');
