@@ -4,8 +4,7 @@
 
 You probably want the higher-level [chalk](https://github.com/chalk/chalk) module for styling your strings.
 
-![](https://cdn.rawgit.com/chalk/ansi-styles/8261697c95bf34b6c7767e2cbe9941a851d59385/screenshot.svg)
-
+<img src="https://cdn.rawgit.com/chalk/ansi-styles/8261697c95bf34b6c7767e2cbe9941a851d59385/screenshot.svg" alt="" width="900">
 
 ## Install
 
