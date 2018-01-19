@@ -50,7 +50,7 @@ test('all color types are always available', t => {
 	const ansi = style.color.ansi
 	const ansi256 = style.color.ansi256
 	const ansi16m = style.color.ansi16m
-	
+
 	t.true(ansi    && ansi.ansi    && ansi.ansi256    && ansi.ansi16m)
 	t.true(ansi256 && ansi256.ansi && ansi256.ansi256 && ansi256.ansi16m)
 	t.true(ansi16m && ansi16m.ansi && ansi16m.ansi256 && ansi16m.ansi16m)
