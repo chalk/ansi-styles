@@ -3,7 +3,7 @@ import test from 'ava';
 // Spoof supports color
 require('./_supports-color')(__dirname);
 
-const style = require( '..' );
+const style = require('..');
 
 // Generates the screenshot
 for (const [key, val] of Object.entries(style)) {
