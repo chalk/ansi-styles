@@ -3,7 +3,7 @@ import test from 'ava';
 // Spoof supports color
 require('./_supports-color')(__dirname);
 
-import style from '.';
+const style = require( '..' );
 
 // Generates the screenshot
 for (const [key, val] of Object.entries(style)) {
@@ -39,21 +39,21 @@ test('groups should not be enumerable', t => {
 });
 
 test('don\'t pollute other objects', t => {
-	const obj1 = require('.');
-	const obj2 = require('.');
+	const obj1 = require('..');
+	const obj2 = require('..');
 
 	obj1.foo = true;
 	t.not(obj1.foo, obj2.foo);
 });
 
 test('all color types are always available', t => {
-	const ansi = style.color.ansi
-	const ansi256 = style.color.ansi256
-	const ansi16m = style.color.ansi16m
+	const ansi = style.color.ansi;
+	const ansi256 = style.color.ansi256;
+	const ansi16m = style.color.ansi16m;
 
-	t.true(ansi    && ansi.ansi    && ansi.ansi256    && ansi.ansi16m)
-	t.true(ansi256 && ansi256.ansi && ansi256.ansi256 && ansi256.ansi16m)
-	t.true(ansi16m && ansi16m.ansi && ansi16m.ansi256 && ansi16m.ansi16m)
+	t.true(ansi && ansi.ansi && ansi.ansi256 && ansi.ansi16m);
+	t.true(ansi256 && ansi256.ansi && ansi256.ansi256 && ansi256.ansi16m);
+	t.true(ansi16m && ansi16m.ansi && ansi16m.ansi256 && ansi16m.ansi16m);
 });
 
 test('support conversion to ansi (16 colors)', t => {
