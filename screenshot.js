@@ -1,3 +1,4 @@
+'use strict';
 const style = require('.');
 
 const width = 55;
