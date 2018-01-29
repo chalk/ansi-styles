@@ -13,7 +13,8 @@
 		"node": ">=4"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava",
+		"screenshot": "svg-term --command='node screenshot' --out=screenshot.svg --padding=3 --width=55 --height=3 --at=1000 --no-cursor"
 	},
 	"files": [
 		"index.js"
@@ -46,6 +47,7 @@
 	"devDependencies": {
 		"ava": "*",
 		"babel-polyfill": "^6.23.0",
+		"svg-term-cli": "^2.1.1",
 		"xo": "*"
 	},
 	"ava": {
