@@ -14,7 +14,7 @@
 	},
 	"scripts": {
 		"test": "xo && ava",
-		"screenshot": "svg-term --command='node screenshot' --out screenshot.svg --padding=3 --width=55 --height=3 --at=1000 --no-cursor"
+		"screenshot": "svg-term --command='node screenshot' --out=screenshot.svg --padding=3 --width=55 --height=3 --at=1000 --no-cursor"
 	},
 	"files": [
 		"index.js"
