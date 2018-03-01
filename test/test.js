@@ -102,3 +102,7 @@ test('export raw ANSI escape codes', t => {
 	t.is(style.codes.get(40), 49);
 	t.is(style.codes.get(100), 49);
 });
+
+test('rgb -> truecolor is stubbed', t => {
+	t.is(style.color.ansi16m.rgb(123, 45, 67), '\u001B[38;2;123;45;67m');
+});
