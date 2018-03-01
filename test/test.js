@@ -1,6 +1,5 @@
 import test from 'ava';
-
-const style = require('..');
+import style from '..';
 
 test('return ANSI escape codes', t => {
 	t.is(style.green.open, '\u001B[32m');
