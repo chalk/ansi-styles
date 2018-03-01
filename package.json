@@ -47,7 +47,6 @@
 	"devDependencies": {
 		"ava": "*",
 		"babel-polyfill": "^6.23.0",
-		"resolve-from": "^4.0.0",
 		"svg-term-cli": "^2.1.1",
 		"xo": "*"
 	},

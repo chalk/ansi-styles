@@ -1,8 +1,5 @@
 import test from 'ava';
 
-// Spoof supports color
-require('./_supports-color')(__dirname);
-
 const style = require('..');
 
 test('return ANSI escape codes', t => {
