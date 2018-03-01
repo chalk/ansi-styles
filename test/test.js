@@ -36,9 +36,22 @@ test('all color types are always available', t => {
 	const ansi256 = style.color.ansi256;
 	const ansi16m = style.color.ansi16m;
 
-	t.true(ansi && ansi.ansi && ansi.ansi256 && ansi.ansi16m);
-	t.true(ansi256 && ansi256.ansi && ansi256.ansi256 && ansi256.ansi16m);
-	t.true(ansi16m && ansi16m.ansi && ansi16m.ansi256 && ansi16m.ansi16m);
+	t.truthy(ansi);
+	t.truthy(ansi.ansi);
+	t.truthy(ansi.ansi256);
+
+	t.truthy(ansi256);
+	t.truthy(ansi256.ansi);
+	t.truthy(ansi256.ansi256);
+
+	t.truthy(ansi16m);
+	t.truthy(ansi16m.ansi);
+	t.truthy(ansi16m.ansi256);
+
+	// There are no such things as ansi16m source colors
+	t.falsy(ansi.ansi16m);
+	t.falsy(ansi256.ansi16m);
+	t.falsy(ansi16m.ansi16m);
 });
 
 test('support conversion to ansi (16 colors)', t => {
