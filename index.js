@@ -108,7 +108,9 @@ function assembleStyles() {
 	styles.color.close = '\u001B[39m';
 	styles.bgColor.close = '\u001B[49m';
 
-	styles.color.ansi = {};
+	styles.color.ansi = {
+		ansi: wrapAnsi16(ansi2ansi, 0)
+	};
 	styles.color.ansi256 = {
 		ansi256: wrapAnsi256(ansi2ansi, 0)
 	};
@@ -116,7 +118,9 @@ function assembleStyles() {
 		rgb: wrapAnsi16m(rgb2rgb, 0)
 	};
 
-	styles.bgColor.ansi = {};
+	styles.bgColor.ansi = {
+		ansi: wrapAnsi16(ansi2ansi, 10)
+	};
 	styles.bgColor.ansi256 = {
 		ansi256: wrapAnsi256(ansi2ansi, 10)
 	};
@@ -124,12 +128,16 @@ function assembleStyles() {
 		rgb: wrapAnsi16m(rgb2rgb, 10)
 	};
 
-	for (const key of Object.keys(colorConvert)) {
+	for (let key of Object.keys(colorConvert)) {
 		if (typeof colorConvert[key] !== 'object') {
 			continue;
 		}
 
 		const suite = colorConvert[key];
+
+		if (key === 'ansi16') {
+			key = 'ansi';
+		}
 
 		if ('ansi16' in suite) {
 			styles.color.ansi[key] = wrapAnsi16(suite.ansi16, 0);
