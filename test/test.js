@@ -1,5 +1,5 @@
 import test from 'ava';
-import style from '.';
+import style from '..';
 
 test('return ANSI escape codes', t => {
 	t.is(style.green.open, '\u001B[32m');
@@ -20,11 +20,34 @@ test('groups should not be enumerable', t => {
 });
 
 test('don\'t pollute other objects', t => {
-	const obj1 = require('.');
-	const obj2 = require('.');
+	const obj1 = require('..');
+	const obj2 = require('..');
 
 	obj1.foo = true;
 	t.not(obj1.foo, obj2.foo);
+});
+
+test('all color types are always available', t => {
+	const ansi = style.color.ansi;
+	const ansi256 = style.color.ansi256;
+	const ansi16m = style.color.ansi16m;
+
+	t.truthy(ansi);
+	t.truthy(ansi.ansi);
+	t.truthy(ansi.ansi256);
+
+	t.truthy(ansi256);
+	t.truthy(ansi256.ansi);
+	t.truthy(ansi256.ansi256);
+
+	t.truthy(ansi16m);
+	t.truthy(ansi16m.ansi);
+	t.truthy(ansi16m.ansi256);
+
+	// There are no such things as ansi16m source colors
+	t.falsy(ansi.ansi16m);
+	t.falsy(ansi256.ansi16m);
+	t.falsy(ansi16m.ansi16m);
 });
 
 test('support conversion to ansi (16 colors)', t => {
@@ -74,4 +97,8 @@ test('export raw ANSI escape codes', t => {
 	t.is(style.codes.get(91), 39);
 	t.is(style.codes.get(40), 49);
 	t.is(style.codes.get(100), 49);
+});
+
+test('rgb -> truecolor is stubbed', t => {
+	t.is(style.color.ansi16m.rgb(123, 45, 67), '\u001B[38;2;123;45;67m');
 });
