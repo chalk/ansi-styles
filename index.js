@@ -42,7 +42,7 @@ function assembleStyles() {
 
 			// Bright color
 			blackBright: [90, 39],
-			// alias bright black as gray
+			// Alias bright black as gray
 			gray: [90, 39],
 			redBright: [91, 39],
 			greenBright: [92, 39],
@@ -64,7 +64,7 @@ function assembleStyles() {
 
 			// Bright color
 			bgBlackBright: [100, 49],
-			// alias bright black as gray
+			// Alias bright black as gray
 			bgGray: [100, 49],
 			bgRedBright: [101, 49],
 			bgGreenBright: [102, 49],
