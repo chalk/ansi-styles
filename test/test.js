@@ -28,9 +28,7 @@ test('don\'t pollute other objects', t => {
 });
 
 test('all color types are always available', t => {
-	const ansi = style.color.ansi;
-	const ansi256 = style.color.ansi256;
-	const ansi16m = style.color.ansi16m;
+	const {ansi, ansi256, ansi16m} = style.color;
 
 	t.truthy(ansi);
 	t.truthy(ansi.ansi);
