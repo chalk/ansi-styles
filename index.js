@@ -39,9 +39,11 @@ function assembleStyles() {
 			magenta: [35, 39],
 			cyan: [36, 39],
 			white: [37, 39],
-			gray: [90, 39],
 
 			// Bright color
+			blackBright: [90, 39],
+			// alias bright black as gray
+			gray: [90, 39],
 			redBright: [91, 39],
 			greenBright: [92, 39],
 			yellowBright: [93, 39],
@@ -62,6 +64,8 @@ function assembleStyles() {
 
 			// Bright color
 			bgBlackBright: [100, 49],
+			// alias bright black as gray
+			bgGray: [100, 49],
 			bgRedBright: [101, 49],
 			bgGreenBright: [102, 49],
 			bgYellowBright: [103, 49],
@@ -74,6 +78,7 @@ function assembleStyles() {
 
 	// Fix humans
 	styles.color.grey = styles.color.gray;
+	styles.bgColor.bgGrey = styles.bgColor.bgGray;
 
 	for (const groupName of Object.keys(styles)) {
 		const group = styles[groupName];
