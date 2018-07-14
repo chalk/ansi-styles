@@ -1,18 +1,18 @@
 'use strict';
 const colorConvert = require('color-convert');
 
-const wrapAnsi16 = (fn, offset) => function () {
-	const code = fn.apply(colorConvert, arguments);
+const wrapAnsi16 = (fn, offset) => (...args) => {
+	const code = fn(...args);
 	return `\u001B[${code + offset}m`;
 };
 
-const wrapAnsi256 = (fn, offset) => function () {
-	const code = fn.apply(colorConvert, arguments);
+const wrapAnsi256 = (fn, offset) => (...args) => {
+	const code = fn(...args);
 	return `\u001B[${38 + offset};5;${code}m`;
 };
 
-const wrapAnsi16m = (fn, offset) => function () {
-	const rgb = fn.apply(colorConvert, arguments);
+const wrapAnsi16m = (fn, offset) => (...args) => {
+	const rgb = fn(...args);
 	return `\u001B[${38 + offset};2;${rgb[0]};${rgb[1]};${rgb[2]}m`;
 };
 
