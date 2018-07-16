@@ -73,10 +73,10 @@ function assembleStyles() {
 	};
 
 	// Alias bright black as gray (and grey)
-	styles.color.gray = styles.color.brightBlack;
-	styles.bgColor.bgGray = styles.bgColor.bgBrightBlack;
-	styles.color.grey = styles.color.brightBlack;
-	styles.bgColor.bgGrey = styles.bgColor.bgBrightBlack;
+	styles.color.gray = styles.color.blackBright;
+	styles.bgColor.bgGray = styles.bgColor.bgBlackBright;
+	styles.color.grey = styles.color.blackBright;
+	styles.bgColor.bgGrey = styles.bgColor.bgBlackBright;
 
 	for (const groupName of Object.keys(styles)) {
 		const group = styles[groupName];
