@@ -15,8 +15,8 @@ test('group related codes into categories', t => {
 });
 
 test('groups should not be enumerable', t => {
-	t.true(Object.getOwnPropertyDescriptor(style, 'modifier') !== undefined);
-	t.true(Object.keys(style).indexOf('modifier') === -1);
+	t.not(Object.getOwnPropertyDescriptor(style, 'modifier'), undefined);
+	t.false(Object.keys(style).includes('modifier'));
 });
 
 test('don\'t pollute other objects', t => {
