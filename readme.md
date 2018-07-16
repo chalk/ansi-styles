@@ -60,7 +60,7 @@ Each style has an `open` and `close` property.
 - `magenta`
 - `cyan`
 - `white`
-- `gray` ("bright black")
+- `blackBright` (alias: `gray`, `grey`)
 - `redBright`
 - `greenBright`
 - `yellowBright`
@@ -79,7 +79,7 @@ Each style has an `open` and `close` property.
 - `bgMagenta`
 - `bgCyan`
 - `bgWhite`
-- `bgBlackBright`
+- `bgBlackBright` (alias: `bgGray`, `bgGrey`)
 - `bgRedBright`
 - `bgGreenBright`
 - `bgYellowBright`
