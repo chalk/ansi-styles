@@ -39,9 +39,9 @@ function assembleStyles() {
 			magenta: [35, 39],
 			cyan: [36, 39],
 			white: [37, 39],
-			gray: [90, 39],
 
 			// Bright color
+			blackBright: [90, 39],
 			redBright: [91, 39],
 			greenBright: [92, 39],
 			yellowBright: [93, 39],
@@ -72,8 +72,11 @@ function assembleStyles() {
 		}
 	};
 
-	// Fix humans
-	styles.color.grey = styles.color.gray;
+	// Alias bright black as gray (and grey)
+	styles.color.gray = styles.color.blackBright;
+	styles.bgColor.bgGray = styles.bgColor.bgBlackBright;
+	styles.color.grey = styles.color.blackBright;
+	styles.bgColor.bgGrey = styles.bgColor.bgBlackBright;
 
 	for (const groupName of Object.keys(styles)) {
 		const group = styles[groupName];
