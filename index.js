@@ -78,12 +78,8 @@ function assembleStyles() {
 	styles.color.grey = styles.color.blackBright;
 	styles.bgColor.bgGrey = styles.bgColor.bgBlackBright;
 
-	for (const groupName of Object.keys(styles)) {
-		const group = styles[groupName];
-
-		for (const styleName of Object.keys(group)) {
-			const style = group[styleName];
-
+	for (const [groupName, group] of Object.entries(styles)) {
+		for (const [styleName, style] of Object.entries(group)) {
 			styles[styleName] = {
 				open: `\u001B[${style[0]}m`,
 				close: `\u001B[${style[1]}m`
@@ -131,12 +127,10 @@ function assembleStyles() {
 		rgb: wrapAnsi16m(rgb2rgb, 10)
 	};
 
-	for (let key of Object.keys(colorConvert)) {
-		if (typeof colorConvert[key] !== 'object') {
+	for (let [key, suite] of Object.entries(colorConvert)) {
+		if (typeof suite !== 'object') {
 			continue;
 		}
-
-		const suite = colorConvert[key];
 
 		if (key === 'ansi16') {
 			key = 'ansi';

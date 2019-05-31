@@ -10,7 +10,7 @@
 		"url": "sindresorhus.com"
 	},
 	"engines": {
-		"node": ">=6"
+		"node": ">=8"
 	},
 	"scripts": {
 		"test": "xo && ava",
@@ -42,11 +42,11 @@
 		"text"
 	],
 	"dependencies": {
-		"color-convert": "^1.9.2"
+		"color-convert": "^2.0.0"
 	},
 	"devDependencies": {
-		"ava": "*",
+		"ava": "^1.4.1",
 		"svg-term-cli": "^2.1.1",
-		"xo": "*"
+		"xo": "^0.24.0"
 	}
 }
