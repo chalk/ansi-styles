@@ -6,20 +6,6 @@ You probably want the higher-level [chalk](https://github.com/chalk/chalk) modul
 
 <img src="screenshot.svg" width="900">
 
----
-
-<div align="center">
-	<b>
-		<a href="https://tidelift.com/subscription/pkg/npm-ansi-styles?utm_source=npm-ansi-styles&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
-	</b>
-	<br>
-	<sub>
-		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
-	</sub>
-</div>
-
----
-
 
 ## Install
 
@@ -145,11 +131,6 @@ style.bgColor.ansi16m.hex('#C0FFEE'); // Hex (RGB) to 16 million color backgroun
 ```
 
 
-## Security
-
-To report a security vulnerability, please use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
-
-
 ## Related
 
 - [ansi-escapes](https://github.com/sindresorhus/ansi-escapes) - ANSI escape codes for manipulating the terminal
@@ -161,6 +142,14 @@ To report a security vulnerability, please use the [Tidelift security contact](h
 - [Josh Junon](https://github.com/qix-)
 
 
-## License
+---
 
-MIT
+<div align="center">
+	<b>
+		<a href="https://tidelift.com/subscription/pkg/npm-ansi-styles?utm_source=npm-ansi-styles&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
+	</b>
+	<br>
+	<sub>
+		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
+	</sub>
+</div>
