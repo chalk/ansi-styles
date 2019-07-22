@@ -32,7 +32,7 @@ const setLazyProperty = (object, property, get) => {
 
 let colorConvert;
 const makeDynamicStyles = (wrap, targetSpace, identity, isBackground) => {
-	if(colorConvert === undefined) {
+	if (colorConvert === undefined) {
 		colorConvert = require('color-convert');
 	}
 
