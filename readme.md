@@ -1,6 +1,6 @@
 # ansi-styles [![Build Status](https://travis-ci.org/chalk/ansi-styles.svg?branch=master)](https://travis-ci.org/chalk/ansi-styles)
 
-> [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles) for styling strings in the terminal
+> [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles) for styling strings in the terminal
 
 You probably want the higher-level [chalk](https://github.com/chalk/chalk) module for styling your strings.
 
@@ -29,7 +29,7 @@ console.log(`${style.green.open}Hello world!${style.green.close}`);
 //       original color.
 console.log(style.bgColor.ansi.hsl(120, 80, 72) + 'Hello world!' + style.bgColor.close);
 console.log(style.color.ansi256.rgb(199, 20, 250) + 'Hello world!' + style.color.close);
-console.log(style.color.ansi16m.hex('#ABCDEF') + 'Hello world!' + style.color.close);
+console.log(style.color.ansi16m.hex('#abcdef') + 'Hello world!' + style.color.close);
 ```
 
 ## API

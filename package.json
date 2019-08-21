@@ -42,10 +42,10 @@
 		"text"
 	],
 	"dependencies": {
-		"color-convert": "^2.0.0"
+		"color-convert": "^2.0.1"
 	},
 	"devDependencies": {
-		"ava": "^1.4.1",
+		"ava": "^2.3.0",
 		"svg-term-cli": "^2.1.1",
 		"xo": "^0.24.0"
 	}
