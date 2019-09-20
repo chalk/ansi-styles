@@ -135,12 +135,12 @@ function assembleStyles() {
 			value: group,
 			enumerable: false
 		});
-
-		Object.defineProperty(styles, 'codes', {
-			value: codes,
-			enumerable: false
-		});
 	}
+
+	Object.defineProperty(styles, 'codes', {
+		value: codes,
+		enumerable: false
+	});
 
 	styles.color.close = '\u001B[39m';
 	styles.bgColor.close = '\u001B[49m';
