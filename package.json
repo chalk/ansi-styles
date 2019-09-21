@@ -13,11 +13,12 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava",
+		"test": "xo && ava && tsd",
 		"screenshot": "svg-term --command='node screenshot' --out=screenshot.svg --padding=3 --width=55 --height=3 --at=1000 --no-cursor"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"ansi",
@@ -42,11 +43,13 @@
 		"text"
 	],
 	"dependencies": {
+		"@types/color-convert": "^1.9.0",
 		"color-convert": "^2.0.1"
 	},
 	"devDependencies": {
 		"ava": "^2.3.0",
 		"svg-term-cli": "^2.1.1",
+		"tsd": "^0.8.0",
 		"xo": "^0.24.0"
 	}
 }
