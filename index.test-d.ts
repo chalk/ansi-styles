@@ -1,9 +1,12 @@
 import {expectType, expectError} from 'tsd';
+import * as cssColors from 'color-name';
 import colorConvert = require('color-convert');
 import ansiStyles = require('.');
 
 declare function keyof<T>(type: T): keyof T;
+declare function params<T extends (...args: any) => unknown>(type: T): Parameters<T>
 
+type CSS_COLOR_NAMES = keyof typeof cssColors;
 type ExpectedColorSpaces = Exclude<keyof typeof colorConvert, 'ansi16'> | 'ansi';
 let expectedColors!: ExpectedColorSpaces;
 
@@ -19,6 +22,10 @@ expectType<keyof typeof ansiStyles.color.ansi>(expectedColors);
 expectType<keyof typeof ansiStyles.color.ansi256>(expectedColors);
 expectType<keyof typeof ansiStyles.color.ansi16m>(expectedColors);
 
+expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.color.ansi.keyword));
+expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.color.ansi256.keyword));
+expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.color.ansi16m.keyword));
+
 // -- Background color --
 expectType<ExpectedColorSpaces>(keyof(ansiStyles.bgColor.ansi));
 expectType<ExpectedColorSpaces>(keyof(ansiStyles.bgColor.ansi256));
@@ -27,6 +34,10 @@ expectType<ExpectedColorSpaces>(keyof(ansiStyles.bgColor.ansi16m));
 expectType<keyof typeof ansiStyles.bgColor.ansi>(expectedColors);
 expectType<keyof typeof ansiStyles.bgColor.ansi256>(expectedColors);
 expectType<keyof typeof ansiStyles.bgColor.ansi16m>(expectedColors);
+
+expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.bgColor.ansi.keyword));
+expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.bgColor.ansi256.keyword));
+expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.bgColor.ansi16m.keyword));
 
 // - Static colors -
 // -- Namespaced --

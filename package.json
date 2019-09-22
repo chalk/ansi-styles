@@ -43,10 +43,11 @@
 		"text"
 	],
 	"dependencies": {
-		"@types/color-convert": "^1.9.0",
+		"@types/color-name": "^1.1.1",
 		"color-convert": "^2.0.1"
 	},
 	"devDependencies": {
+		"@types/color-convert": "^1.9.0",
 		"ava": "^2.3.0",
 		"svg-term-cli": "^2.1.1",
 		"tsd": "^0.8.0",
