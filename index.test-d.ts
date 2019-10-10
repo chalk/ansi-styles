@@ -1,5 +1,6 @@
 import {expectType, expectError} from 'tsd';
 import * as cssColors from 'color-name';
+import { KEYWORD } from 'color-convert/conversions';
 import colorConvert = require('color-convert');
 import ansiStyles = require('.');
 
@@ -9,6 +10,11 @@ declare function params<T extends (...args: any) => unknown>(type: T): Parameter
 type CSS_COLOR_NAMES = keyof typeof cssColors;
 type ExpectedColorSpaces = Exclude<keyof typeof colorConvert, 'ansi16'> | 'ansi';
 let expectedColors!: ExpectedColorSpaces;
+let CSS_COLOR_NAMES!: CSS_COLOR_NAMES;
+let KEYWORD!: KEYWORD;
+
+expectType<KEYWORD>(CSS_COLOR_NAMES);
+expectType<CSS_COLOR_NAMES>(KEYWORD);
 
 expectType<ReadonlyMap<number, number>>(ansiStyles.codes);
 
@@ -42,114 +48,114 @@ expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.bgColor.ansi16m.keyword));
 // - Static colors -
 // -- Namespaced --
 // --- Foreground color ---
-expectType<ansiStyles.CSIPair>(ansiStyles.color.black);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.red);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.green);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.yellow);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.blue);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.cyan);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.magenta);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.white);
+expectType<ansiStyles.CSPair>(ansiStyles.color.black);
+expectType<ansiStyles.CSPair>(ansiStyles.color.red);
+expectType<ansiStyles.CSPair>(ansiStyles.color.green);
+expectType<ansiStyles.CSPair>(ansiStyles.color.yellow);
+expectType<ansiStyles.CSPair>(ansiStyles.color.blue);
+expectType<ansiStyles.CSPair>(ansiStyles.color.cyan);
+expectType<ansiStyles.CSPair>(ansiStyles.color.magenta);
+expectType<ansiStyles.CSPair>(ansiStyles.color.white);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.color.gray);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.grey);
+expectType<ansiStyles.CSPair>(ansiStyles.color.gray);
+expectType<ansiStyles.CSPair>(ansiStyles.color.grey);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.color.blackBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.redBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.greenBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.yellowBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.blueBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.cyanBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.magentaBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.color.whiteBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.blackBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.redBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.greenBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.yellowBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.blueBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.cyanBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.magentaBright);
+expectType<ansiStyles.CSPair>(ansiStyles.color.whiteBright);
 
-expectType<'\x1B[39m'>(ansiStyles.color.close);
+expectType<string>(ansiStyles.color.close);
 
 // --- Background color ---
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgBlack);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgRed);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgGreen);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgYellow);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgBlue);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgCyan);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgMagenta);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgWhite);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgBlack);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgRed);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgGreen);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgYellow);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgBlue);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgCyan);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgMagenta);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgWhite);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgGray);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgGrey);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgGray);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgGrey);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgBlackBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgRedBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgGreenBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgYellowBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgBlueBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgCyanBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgMagentaBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgColor.bgWhiteBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgBlackBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgRedBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgGreenBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgYellowBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgBlueBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgCyanBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgMagentaBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgColor.bgWhiteBright);
 
-expectType<'\x1B[49m'>(ansiStyles.bgColor.close);
+expectType<string>(ansiStyles.bgColor.close);
 
 // --- Modifiers ---
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.bold);
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.dim);
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.hidden);
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.inverse);
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.italic);
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.reset);
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.strikethrough);
-expectType<ansiStyles.CSIPair>(ansiStyles.modifier.underline);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.bold);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.dim);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.hidden);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.inverse);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.italic);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.reset);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.strikethrough);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.underline);
 
 // -- Top level --
 // --- Foreground color ---
-expectType<ansiStyles.CSIPair>(ansiStyles.black);
-expectType<ansiStyles.CSIPair>(ansiStyles.red);
-expectType<ansiStyles.CSIPair>(ansiStyles.green);
-expectType<ansiStyles.CSIPair>(ansiStyles.yellow);
-expectType<ansiStyles.CSIPair>(ansiStyles.blue);
-expectType<ansiStyles.CSIPair>(ansiStyles.cyan);
-expectType<ansiStyles.CSIPair>(ansiStyles.magenta);
-expectType<ansiStyles.CSIPair>(ansiStyles.white);
+expectType<ansiStyles.CSPair>(ansiStyles.black);
+expectType<ansiStyles.CSPair>(ansiStyles.red);
+expectType<ansiStyles.CSPair>(ansiStyles.green);
+expectType<ansiStyles.CSPair>(ansiStyles.yellow);
+expectType<ansiStyles.CSPair>(ansiStyles.blue);
+expectType<ansiStyles.CSPair>(ansiStyles.cyan);
+expectType<ansiStyles.CSPair>(ansiStyles.magenta);
+expectType<ansiStyles.CSPair>(ansiStyles.white);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.gray);
-expectType<ansiStyles.CSIPair>(ansiStyles.grey);
+expectType<ansiStyles.CSPair>(ansiStyles.gray);
+expectType<ansiStyles.CSPair>(ansiStyles.grey);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.blackBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.redBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.greenBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.yellowBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.blueBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.cyanBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.magentaBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.whiteBright);
+expectType<ansiStyles.CSPair>(ansiStyles.blackBright);
+expectType<ansiStyles.CSPair>(ansiStyles.redBright);
+expectType<ansiStyles.CSPair>(ansiStyles.greenBright);
+expectType<ansiStyles.CSPair>(ansiStyles.yellowBright);
+expectType<ansiStyles.CSPair>(ansiStyles.blueBright);
+expectType<ansiStyles.CSPair>(ansiStyles.cyanBright);
+expectType<ansiStyles.CSPair>(ansiStyles.magentaBright);
+expectType<ansiStyles.CSPair>(ansiStyles.whiteBright);
 
 // --- Background color ---
-expectType<ansiStyles.CSIPair>(ansiStyles.bgBlack);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgRed);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgGreen);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgYellow);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgBlue);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgCyan);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgMagenta);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgWhite);
+expectType<ansiStyles.CSPair>(ansiStyles.bgBlack);
+expectType<ansiStyles.CSPair>(ansiStyles.bgRed);
+expectType<ansiStyles.CSPair>(ansiStyles.bgGreen);
+expectType<ansiStyles.CSPair>(ansiStyles.bgYellow);
+expectType<ansiStyles.CSPair>(ansiStyles.bgBlue);
+expectType<ansiStyles.CSPair>(ansiStyles.bgCyan);
+expectType<ansiStyles.CSPair>(ansiStyles.bgMagenta);
+expectType<ansiStyles.CSPair>(ansiStyles.bgWhite);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.bgGray);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgGrey);
+expectType<ansiStyles.CSPair>(ansiStyles.bgGray);
+expectType<ansiStyles.CSPair>(ansiStyles.bgGrey);
 
-expectType<ansiStyles.CSIPair>(ansiStyles.bgBlackBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgRedBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgGreenBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgYellowBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgBlueBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgCyanBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgMagentaBright);
-expectType<ansiStyles.CSIPair>(ansiStyles.bgWhiteBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgBlackBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgRedBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgGreenBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgYellowBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgBlueBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgCyanBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgMagentaBright);
+expectType<ansiStyles.CSPair>(ansiStyles.bgWhiteBright);
 
 // --- Modifiers ---
-expectType<ansiStyles.CSIPair>(ansiStyles.bold);
-expectType<ansiStyles.CSIPair>(ansiStyles.dim);
-expectType<ansiStyles.CSIPair>(ansiStyles.hidden);
-expectType<ansiStyles.CSIPair>(ansiStyles.inverse);
-expectType<ansiStyles.CSIPair>(ansiStyles.italic);
-expectType<ansiStyles.CSIPair>(ansiStyles.reset);
-expectType<ansiStyles.CSIPair>(ansiStyles.strikethrough);
-expectType<ansiStyles.CSIPair>(ansiStyles.underline);
+expectType<ansiStyles.CSPair>(ansiStyles.bold);
+expectType<ansiStyles.CSPair>(ansiStyles.dim);
+expectType<ansiStyles.CSPair>(ansiStyles.hidden);
+expectType<ansiStyles.CSPair>(ansiStyles.inverse);
+expectType<ansiStyles.CSPair>(ansiStyles.italic);
+expectType<ansiStyles.CSPair>(ansiStyles.reset);
+expectType<ansiStyles.CSPair>(ansiStyles.strikethrough);
+expectType<ansiStyles.CSPair>(ansiStyles.underline);

@@ -36,6 +36,7 @@ const setLazyProperty = (object, property, get) => {
 	});
 };
 
+/** @type {typeof import('color-convert')} */
 let colorConvert;
 const makeDynamicStyles = (wrap, targetSpace, identity, isBackground) => {
 	if (colorConvert === undefined) {

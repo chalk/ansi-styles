@@ -5,73 +5,73 @@ declare namespace ansiStyles {
 		/**
 		The RGB color space.
 
-		@param red - (0-255).
-		@param green - (0-255).
-		@param blue - (0-255).
+		@param red - (`0`-`255`)
+		@param green - (`0`-`255`)
+		@param blue - (`0`-`255`)
 		*/
 		rgb(red: number, green: number, blue: number): string;
 
 		/**
 		The HSL color space.
 
-		@param hue - (0-360).
-		@param saturation - (0-100).
-		@param lightness - (0-100).
+		@param hue - (`0`-`360`)
+		@param saturation - (`0`-`100`)
+		@param lightness - (`0`-`100`)
 		*/
 		hsl(hue: number, saturation: number, lightness: number): string;
 
 		/**
 		The HSV color space.
 
-		@param hue - (0-360).
-		@param saturation - (0-100).
-		@param value - (0-100).
+		@param hue - (`0`-`360`)
+		@param saturation - (`0`-`100`)
+		@param value - (`0`-`100`)
 		*/
 		hsv(hue: number, saturation: number, value: number): string;
 
 		/**
 		The HSV color space.
 
-		@param hue - (0-360).
-		@param whiteness - (0-100).
-		@param blackness - (0-100).
+		@param hue - (`0`-`360`)
+		@param whiteness - (`0`-`100`)
+		@param blackness - (`0`-`100`)
 		*/
 		hwb(hue: number, whiteness: number, blackness: number): string;
 
 		/**
 		The CMYK color space.
 
-		@param cyan - (0-100).
-		@param magenta - (0-100).
-		@param yellow - (0-100).
-		@param black - (0-100).
+		@param cyan - (`0`-`100`)
+		@param magenta - (`0`-`100`)
+		@param yellow - (`0`-`100`)
+		@param black - (`0`-`100`)
 		*/
 		cmyk(cyan: number, magenta: number, yellow: number, black: number): string;
 
 		/**
 		The XYZ color space.
 
-		@param x - (0-100).
-		@param y - (0-100).
-		@param z - (0-100).
+		@param x - (`0`-`100`)
+		@param y - (`0`-`100`)
+		@param z - (`0`-`100`)
 		*/
 		xyz(x: number, y: number, z: number): string;
 
 		/**
 		The LAB color space.
 
-		@param x - (0-100).
-		@param y - (0-100).
-		@param z - (0-100).
+		@param x - (`0`-`100`)
+		@param y - (`0`-`100`)
+		@param z - (`0`-`100`)
 		*/
 		lab(lightness: number, a: number, b: number): string;
 
 		/**
 		The LCH/HCL color space.
 
-		@param lightness - (0-100).
-		@param chroma - (0-100).
-		@param hue - (0-360).
+		@param lightness - (`0`-`100`)
+		@param chroma - (`0`-`100`)
+		@param hue - (`0`-`360`)
 		*/
 		lch(lightness: number, chroma: number, hue: number): string;
 
@@ -87,36 +87,45 @@ declare namespace ansiStyles {
 		*/
 		keyword(keyword: keyof typeof cssColors): string;
 
+		/**
+		Use a [4-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4-bit)
+		to set text color.
+		*/
 		ansi(ansi: number): string;
+
+		/**
+		Use an [8-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
+		to set text color.
+		*/
 		ansi256(ansi: number): string;
 
 		/**
 		The HCG color space.
 
-		@param hue - (0-360).
-		@param chroma - (0-100).
-		@param gray - (0-100).
+		@param hue - (`0`-`360`)
+		@param chroma - (`0`-`100`)
+		@param gray - (`0`-`100`)
 		*/
 		hcg(hue: number, chroma: number, gray: number): string;
 
 		/**
 		The Apple RGB 16-bit color space.
 
-		@param red - (0-65535).
-		@param green - (0-65535).
-		@param blue - (0-65535).
+		@param red - (`0`-`65535`)
+		@param green - (`0`-`65535`)
+		@param blue - (`0`-`65535`)
 		*/
 		apple(r16: number, g16: number, b16: number): string;
 
 		/**
 		Grayscale color.
 
-		@param gray - (0-100).
+		@param gray - (`0`-`100`)
 		*/
 		gray(gray: number): string;
 	}
 
-	interface CSIPair {
+	interface CSPair {
 		/**
 		The ANSI terminal control sequence for starting this style.
 		*/
@@ -128,7 +137,7 @@ declare namespace ansiStyles {
 		readonly close: string;
 	}
 
-	interface ColorBase<Close extends string> {
+	interface ColorBase {
 		readonly ansi: ColorConvert;
 		readonly ansi256: ColorConvert;
 		readonly ansi16m: ColorConvert;
@@ -136,71 +145,116 @@ declare namespace ansiStyles {
 		/**
 		The ANSI terminal control sequence for ending this color.
 		*/
-		readonly close: Close;
+		readonly close: string;
 	}
 
 	interface Modifier {
-		readonly bold: CSIPair;
-		readonly dim: CSIPair;
-		readonly hidden: CSIPair;
-		readonly inverse: CSIPair;
-		readonly italic: CSIPair;
-		readonly reset: CSIPair;
-		readonly strikethrough: CSIPair;
-		readonly underline: CSIPair;
+		/**
+		Resets the current color chain.
+		*/
+		readonly reset: CSPair;
+
+		/**
+		Make text bold.
+		*/
+		readonly bold: CSPair;
+
+		/**
+		Emitting only a small amount of light.
+		*/
+		readonly dim: CSPair;
+
+		/**
+		Make text italic. (Not widely supported)
+		*/
+		readonly italic: CSPair;
+
+		/**
+		Make text underline. (Not widely supported)
+		*/
+		readonly underline: CSPair;
+
+		/**
+		Inverse background and foreground colors.
+		*/
+		readonly inverse: CSPair;
+
+		/**
+		Prints the text, but makes it invisible.
+		*/
+		readonly hidden: CSPair;
+
+		/**
+		Puts a horizontal line through the center of the text. (Not widely supported)
+		*/
+		readonly strikethrough: CSPair;
 	}
 
 	interface ForegroundColor {
-		readonly black: CSIPair;
-		readonly red: CSIPair;
-		readonly green: CSIPair;
-		readonly yellow: CSIPair;
-		readonly blue: CSIPair;
-		readonly cyan: CSIPair;
-		readonly magenta: CSIPair;
-		readonly white: CSIPair;
+		readonly black: CSPair;
+		readonly red: CSPair;
+		readonly green: CSPair;
+		readonly yellow: CSPair;
+		readonly blue: CSPair;
+		readonly cyan: CSPair;
+		readonly magenta: CSPair;
+		readonly white: CSPair;
 
-		readonly gray: CSIPair;
-		readonly grey: CSIPair;
+		/**
+		Alias for `blackBright`.
+		*/
+		readonly gray: CSPair;
 
-		readonly blackBright: CSIPair;
-		readonly redBright: CSIPair;
-		readonly greenBright: CSIPair;
-		readonly yellowBright: CSIPair;
-		readonly blueBright: CSIPair;
-		readonly cyanBright: CSIPair;
-		readonly magentaBright: CSIPair;
-		readonly whiteBright: CSIPair;
+		/**
+		Alias for `blackBright`.
+		*/
+		readonly grey: CSPair;
+
+		readonly blackBright: CSPair;
+		readonly redBright: CSPair;
+		readonly greenBright: CSPair;
+		readonly yellowBright: CSPair;
+		readonly blueBright: CSPair;
+		readonly cyanBright: CSPair;
+		readonly magentaBright: CSPair;
+		readonly whiteBright: CSPair;
 	}
 
 	interface BackgroundColor {
-		readonly bgBlack: CSIPair;
-		readonly bgRed: CSIPair;
-		readonly bgGreen: CSIPair;
-		readonly bgYellow: CSIPair;
-		readonly bgBlue: CSIPair;
-		readonly bgCyan: CSIPair;
-		readonly bgMagenta: CSIPair;
-		readonly bgWhite: CSIPair;
+		readonly bgBlack: CSPair;
+		readonly bgRed: CSPair;
+		readonly bgGreen: CSPair;
+		readonly bgYellow: CSPair;
+		readonly bgBlue: CSPair;
+		readonly bgCyan: CSPair;
+		readonly bgMagenta: CSPair;
+		readonly bgWhite: CSPair;
 
-		readonly bgGray: CSIPair;
-		readonly bgGrey: CSIPair;
+		/**
+		Alias for `bgBlackBright`.
+		*/
+		readonly bgGray: CSPair;
 
-		readonly bgBlackBright: CSIPair;
-		readonly bgRedBright: CSIPair;
-		readonly bgGreenBright: CSIPair;
-		readonly bgYellowBright: CSIPair;
-		readonly bgBlueBright: CSIPair;
-		readonly bgCyanBright: CSIPair;
-		readonly bgMagentaBright: CSIPair;
-		readonly bgWhiteBright: CSIPair;
+		/**
+		Alias for `bgBlackBright`.
+		*/
+		readonly bgGrey: CSPair;
+
+		readonly bgBlackBright: CSPair;
+		readonly bgRedBright: CSPair;
+		readonly bgGreenBright: CSPair;
+		readonly bgYellowBright: CSPair;
+		readonly bgBlueBright: CSPair;
+		readonly bgCyanBright: CSPair;
+		readonly bgMagentaBright: CSPair;
+		readonly bgWhiteBright: CSPair;
 	}
 }
 
 declare const ansiStyles: {
 	readonly modifier: ansiStyles.Modifier;
-	readonly color: ansiStyles.ForegroundColor & ansiStyles.ColorBase<'\u001B[39m'>;
-	readonly bgColor: ansiStyles.BackgroundColor & ansiStyles.ColorBase<'\u001B[49m'>;
+	readonly color: ansiStyles.ForegroundColor & ansiStyles.ColorBase;
+	readonly bgColor: ansiStyles.BackgroundColor & ansiStyles.ColorBase;
 	readonly codes: ReadonlyMap<number, number>;
 } & ansiStyles.BackgroundColor & ansiStyles.ForegroundColor & ansiStyles.Modifier;
 
