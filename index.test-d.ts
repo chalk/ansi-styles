@@ -1,6 +1,6 @@
 import {expectType, expectError} from 'tsd';
 import * as cssColors from 'color-name';
-import { KEYWORD } from 'color-convert/conversions';
+import {KEYWORD} from 'color-convert/conversions';
 import colorConvert = require('color-convert');
 import ansiStyles = require('.');
 
