@@ -39,43 +39,6 @@ declare namespace ansiStyles {
 		hwb(hue: number, whiteness: number, blackness: number): string;
 
 		/**
-		The CMYK color space.
-
-		@param cyan - (`0`-`100`)
-		@param magenta - (`0`-`100`)
-		@param yellow - (`0`-`100`)
-		@param black - (`0`-`100`)
-		*/
-		cmyk(cyan: number, magenta: number, yellow: number, black: number): string;
-
-		/**
-		The XYZ color space.
-
-		@param x - (`0`-`100`)
-		@param y - (`0`-`100`)
-		@param z - (`0`-`100`)
-		*/
-		xyz(x: number, y: number, z: number): string;
-
-		/**
-		The LAB color space.
-
-		@param x - (`0`-`100`)
-		@param y - (`0`-`100`)
-		@param z - (`0`-`100`)
-		*/
-		lab(lightness: number, a: number, b: number): string;
-
-		/**
-		The LCH/HCL color space.
-
-		@param lightness - (`0`-`100`)
-		@param chroma - (`0`-`100`)
-		@param hue - (`0`-`360`)
-		*/
-		lch(lightness: number, chroma: number, hue: number): string;
-
-		/**
 		The RGB HEX color space.
 
 		@param hex - A hexadecimal string containing RGB data.
@@ -88,41 +51,14 @@ declare namespace ansiStyles {
 		keyword(keyword: keyof typeof cssColors): string;
 
 		/**
-		Use a [4-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4-bit)
-		to set text color.
+		Use a [4-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4-bit) to set text color.
 		*/
 		ansi(ansi: number): string;
 
 		/**
-		Use an [8-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
-		to set text color.
+		Use an [8-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit) to set text color.
 		*/
 		ansi256(ansi: number): string;
-
-		/**
-		The HCG color space.
-
-		@param hue - (`0`-`360`)
-		@param chroma - (`0`-`100`)
-		@param gray - (`0`-`100`)
-		*/
-		hcg(hue: number, chroma: number, gray: number): string;
-
-		/**
-		The Apple RGB 16-bit color space.
-
-		@param red - (`0`-`65535`)
-		@param green - (`0`-`65535`)
-		@param blue - (`0`-`65535`)
-		*/
-		apple(r16: number, g16: number, b16: number): string;
-
-		/**
-		Grayscale color.
-
-		@param gray - (`0`-`100`)
-		*/
-		gray(gray: number): string;
 	}
 
 	interface CSPair {
