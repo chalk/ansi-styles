@@ -117,6 +117,17 @@ console.log(style.codes.get(36));
 
 `ansi-styles` uses the [`color-convert`](https://github.com/Qix-/color-convert) package to allow for converting between various colors and ANSI escapes, with support for 256 and 16 million colors.
 
+The following color spaces from `color-convert` are supported:
+
+- `rgb`
+- `hex`
+- `keyword`
+- `hsl`
+- `hsv`
+- `hwb`
+- `ansi`
+- `ansi256`
+
 To use these, call the associated conversion function with the intended output, for example:
 
 ```js

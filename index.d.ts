@@ -12,6 +12,18 @@ declare namespace ansiStyles {
 		rgb(red: number, green: number, blue: number): string;
 
 		/**
+		The RGB HEX color space.
+
+		@param hex - A hexadecimal string containing RGB data.
+		*/
+		hex(hex: string): string;
+
+		/**
+		@param keyword - A CSS color name.
+		*/
+		keyword(keyword: keyof typeof cssColors): string;
+
+		/**
 		The HSL color space.
 
 		@param hue - (`0`-`360`)
@@ -37,18 +49,6 @@ declare namespace ansiStyles {
 		@param blackness - (`0`-`100`)
 		*/
 		hwb(hue: number, whiteness: number, blackness: number): string;
-
-		/**
-		The RGB HEX color space.
-
-		@param hex - A hexadecimal string containing RGB data.
-		*/
-		hex(hex: string): string;
-
-		/**
-		@param keyword - A CSS color name.
-		*/
-		keyword(keyword: keyof typeof cssColors): string;
 
 		/**
 		Use a [4-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4-bit) to set text color.
