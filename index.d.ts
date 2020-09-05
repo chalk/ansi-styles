@@ -1,4 +1,5 @@
-declare type CSSColor = 'aliceblue'
+declare type CSSColor =
+	| 'aliceblue'
 	| 'antiquewhite'
 	| 'aqua'
 	| 'aquamarine'
