@@ -44,7 +44,6 @@
 		"text"
 	],
 	"dependencies": {
-		"@types/color-name": "^1.1.1",
 		"color-convert": "^2.0.1"
 	},
 	"devDependencies": {
