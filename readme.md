@@ -25,7 +25,6 @@ console.log(`${style.green.open}Hello world!${style.green.close}`);
 //       may be degraded to fit that color palette. This means terminals
 //       that do not support 16 million colors will best-match the
 //       original color.
-console.log(style.bgColor.ansi.hsl(120, 80, 72) + 'Hello world!' + style.bgColor.close);
 console.log(style.color.ansi256.rgb(199, 20, 250) + 'Hello world!' + style.color.close);
 console.log(style.color.ansi16m.hex('#abcdef') + 'Hello world!' + style.color.close);
 ```
@@ -110,17 +109,12 @@ console.log(style.codes.get(36));
 
 ## [256 / 16 million (TrueColor) support](https://gist.github.com/XVilka/8346728)
 
-`ansi-styles` uses the [`color-convert`](https://github.com/Qix-/color-convert) package to allow for converting between various colors and ANSI escapes, with support for 256 and 16 million colors.
+`ansi-styles` allows converting between various color formats and ANSI escapes, with support for 256 and 16 million colors.
 
 The following color spaces from `color-convert` are supported:
 
 - `rgb`
 - `hex`
-- `keyword`
-- `hsl`
-- `hsv`
-- `hwb`
-- `ansi`
 - `ansi256`
 
 To use these, call the associated conversion function with the intended output, for example:

@@ -1,27 +1,7 @@
-import {expectType, expectError} from 'tsd';
-import * as cssColors from 'color-name';
-import {KEYWORD} from 'color-convert/conversions';
-import colorConvert = require('color-convert');
+import {expectType} from 'tsd';
 import ansiStyles = require('.');
 
-declare function keyof<T>(type: T): keyof T;
-declare function params<T extends (...args: any) => unknown>(type: T): Parameters<T>
-
-type CSS_COLOR_NAMES = keyof typeof cssColors;
-let CSS_COLOR_NAMES!: CSS_COLOR_NAMES;
-let KEYWORD!: KEYWORD;
-
-expectType<KEYWORD>(CSS_COLOR_NAMES);
-expectType<CSS_COLOR_NAMES>(KEYWORD);
-
 expectType<ReadonlyMap<number, number>>(ansiStyles.codes);
-
-expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.color.ansi.keyword));
-expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.color.ansi256.keyword));
-expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.color.ansi16m.keyword));
-expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.bgColor.ansi.keyword));
-expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.bgColor.ansi256.keyword));
-expectType<[CSS_COLOR_NAMES]>(params(ansiStyles.bgColor.ansi16m.keyword));
 
 // - Static colors -
 // -- Namespaced --

@@ -1,10 +1,5 @@
 'use strict';
 
-const wrapAnsi16 = (fn, offset) => (...args) => {
-	const code = fn(...args);
-	return `\u001B[${code + offset}m`;
-};
-
 const wrapAnsi256 = (fn, offset) => (...args) => {
 	const code = fn(...args);
 	return `\u001B[${38 + offset};5;${code}m`;
@@ -36,22 +31,70 @@ const setLazyProperty = (object, property, get) => {
 	});
 };
 
-/** @type {typeof import('color-convert')} */
-let colorConvert;
-const makeDynamicStyles = (wrap, targetSpace, identity, isBackground) => {
-	if (colorConvert === undefined) {
-		colorConvert = require('color-convert');
-	}
+// From https://github.com/Qix-/color-convert/blob/3f0e0d4e92e235796ccb17f6e85c72094a651f49/conversions.js
+const colorConversions = {
+	rgb: {
+		ansi256(r, g, b) {
+			// We use the extended greyscale palette here, with the exception of
+			// black and white. normal palette only has 4 greyscale shades.
+			if (r === g && g === b) {
+				if (r < 8) {
+					return 16;
+				}
 
+				if (r > 248) {
+					return 231;
+				}
+
+				return Math.round(((r - 8) / 247) * 24) + 232;
+			}
+
+			return 16 +
+				(36 * Math.round(r / 255 * 5)) +
+				(6 * Math.round(g / 255 * 5)) +
+				Math.round(b / 255 * 5);
+		}
+	},
+	hex: {
+		rgb(hex) {
+			const match = hex.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
+			if (!match) {
+				return [0, 0, 0];
+			}
+
+			let colorString = match[0];
+
+			if (match[0].length === 3) {
+				colorString = colorString.split('').map(char => {
+					return char + char;
+				}).join('');
+			}
+
+			const integer = parseInt(colorString, 16);
+
+			return [
+				(integer >> 16) & 0xFF,
+				(integer >> 8) & 0xFF,
+				integer & 0xFF
+			];
+		},
+		ansi256(hex) {
+			return colorConversions.rgb.ansi256(...colorConversions.hex.rgb(hex));
+		}
+	},
+	ansi256: {
+		ansi256: ansi2ansi
+	}
+};
+
+const makeDynamicStyles = (wrap, targetSpace, identity, isBackground) => {
 	const offset = isBackground ? 10 : 0;
 	const styles = {};
-
-	for (const [sourceSpace, suite] of Object.entries(colorConvert)) {
-		const name = sourceSpace === 'ansi16' ? 'ansi' : sourceSpace;
+	for (const [sourceSpace, suite] of Object.entries(colorConversions)) {
 		if (sourceSpace === targetSpace) {
-			styles[name] = wrap(identity, offset);
+			styles[sourceSpace] = wrap(identity, offset);
 		} else if (typeof suite === 'object') {
-			styles[name] = wrap(suite[targetSpace], offset);
+			styles[sourceSpace] = wrap(suite[targetSpace], offset);
 		}
 	}
 
@@ -146,10 +189,8 @@ function assembleStyles() {
 	styles.color.close = '\u001B[39m';
 	styles.bgColor.close = '\u001B[49m';
 
-	setLazyProperty(styles.color, 'ansi', () => makeDynamicStyles(wrapAnsi16, 'ansi16', ansi2ansi, false));
 	setLazyProperty(styles.color, 'ansi256', () => makeDynamicStyles(wrapAnsi256, 'ansi256', ansi2ansi, false));
 	setLazyProperty(styles.color, 'ansi16m', () => makeDynamicStyles(wrapAnsi16m, 'rgb', rgb2rgb, false));
-	setLazyProperty(styles.bgColor, 'ansi', () => makeDynamicStyles(wrapAnsi16, 'ansi16', ansi2ansi, true));
 	setLazyProperty(styles.bgColor, 'ansi256', () => makeDynamicStyles(wrapAnsi256, 'ansi256', ansi2ansi, true));
 	setLazyProperty(styles.bgColor, 'ansi16m', () => makeDynamicStyles(wrapAnsi16m, 'rgb', rgb2rgb, true));
 
