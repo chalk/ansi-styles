@@ -34,25 +34,25 @@ const setLazyProperty = (object, property, get) => {
 // From https://github.com/Qix-/color-convert/blob/3f0e0d4e92e235796ccb17f6e85c72094a651f49/conversions.js
 const colorConversions = {
 	rgb: {
-		ansi256(r, g, b) {
+		ansi256(red, green, blue) {
 			// We use the extended greyscale palette here, with the exception of
 			// black and white. normal palette only has 4 greyscale shades.
-			if (r === g && g === b) {
-				if (r < 8) {
+			if (red === green && green === blue) {
+				if (red < 8) {
 					return 16;
 				}
 
-				if (r > 248) {
+				if (red > 248) {
 					return 231;
 				}
 
-				return Math.round(((r - 8) / 247) * 24) + 232;
+				return Math.round(((red - 8) / 247) * 24) + 232;
 			}
 
 			return 16 +
-				(36 * Math.round(r / 255 * 5)) +
-				(6 * Math.round(g / 255 * 5)) +
-				Math.round(b / 255 * 5);
+				(36 * Math.round(red / 255 * 5)) +
+				(6 * Math.round(green / 255 * 5)) +
+				Math.round(blue / 255 * 5);
 		}
 	},
 	hex: {
@@ -65,9 +65,7 @@ const colorConversions = {
 			let colorString = match[0];
 
 			if (match[0].length === 3) {
-				colorString = colorString.split('').map(char => {
-					return char + char;
-				}).join('');
+				colorString = colorString.split('').map(character => character + character).join('');
 			}
 
 			const integer = parseInt(colorString, 16);
