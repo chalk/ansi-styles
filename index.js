@@ -57,7 +57,7 @@ const colorConversions = {
 	},
 	hex: {
 		rgb(hex) {
-			const match = hex.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
+			const match = hex.toString(16).match(/[a-f\d]{6}|[a-f\d]{3}/i);
 			if (!match) {
 				return [0, 0, 0];
 			}
@@ -68,7 +68,7 @@ const colorConversions = {
 				colorString = colorString.split('').map(character => character + character).join('');
 			}
 
-			const integer = parseInt(colorString, 16);
+			const integer = Number.parseInt(colorString, 16);
 
 			return [
 				(integer >> 16) & 0xFF,
