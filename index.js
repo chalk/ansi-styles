@@ -70,7 +70,7 @@ const colorConversions = {
 				}).join('');
 			}
 
-			const integer = parseInt(colorString, 16);
+			const integer = Number.parseInt(colorString, 16);
 
 			return [
 				(integer >> 16) & 0xFF,
