@@ -57,11 +57,11 @@ const colorConversions = {
 	},
 	hex: {
 		rgb(hex) {
-			let matches = /(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(hex.toString(16));
+			const matches = /(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(hex.toString(16));
 			if (!matches) {
 				return [0, 0, 0];
 			}
-			
+
 			let {colorString} = matches.groups;
 
 			if (colorString.length === 3) {
