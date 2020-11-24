@@ -1,27 +1,4 @@
 declare namespace ansiStyles {
-	interface ColorConvert {
-		/**
-		The RGB color space.
-
-		@param red - (`0`-`255`)
-		@param green - (`0`-`255`)
-		@param blue - (`0`-`255`)
-		*/
-		rgb(red: number, green: number, blue: number): string;
-
-		/**
-		The RGB HEX color space.
-
-		@param hex - A hexadecimal string containing RGB data.
-		*/
-		hex(hex: string): string;
-
-		/**
-		Use an [8-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit) to set text color.
-		*/
-		ansi256(ansi: number): string;
-	}
-
 	interface CSPair {
 		/**
 		The ANSI terminal control sequence for starting this style.
@@ -35,8 +12,9 @@ declare namespace ansiStyles {
 	}
 
 	interface ColorBase {
-		readonly ansi256: ColorConvert;
-		readonly ansi16m: ColorConvert;
+		ansi256(ansi256: number): string;
+
+		ansi16m(rgb: readonly [number, number, number]): string;
 
 		/**
 		The ANSI terminal control sequence for ending this color.
@@ -145,6 +123,29 @@ declare namespace ansiStyles {
 		readonly bgMagentaBright: CSPair;
 		readonly bgWhiteBright: CSPair;
 	}
+
+	interface ConvertColor {
+		/**
+		Convert from the RGB color space to the ANSI 256 color space.
+
+		@param rgb (`0`-`255`)
+		*/
+		rgbToAnsi256(rgb: readonly [number, number, number]): number;
+
+		/**
+		Convert from the RGB HEX color space to the RGB color space.
+
+		@param hex A hexadecimal string containing RGB data.
+		*/
+		hexToRgb(hex: string): [number, number, number];
+
+		/**
+		Convert from the RGB HEX color space to the ANSI 256 color space.
+
+		@param hex A hexadecimal string containing RGB data.
+		*/
+		hexToAnsi256(hex: string): number;
+	}
 }
 
 declare const ansiStyles: {
@@ -152,6 +153,6 @@ declare const ansiStyles: {
 	readonly color: ansiStyles.ForegroundColor & ansiStyles.ColorBase;
 	readonly bgColor: ansiStyles.BackgroundColor & ansiStyles.ColorBase;
 	readonly codes: ReadonlyMap<number, number>;
-} & ansiStyles.BackgroundColor & ansiStyles.ForegroundColor & ansiStyles.Modifier;
+} & ansiStyles.BackgroundColor & ansiStyles.ForegroundColor & ansiStyles.Modifier & ansiStyles.ConvertColor;
 
 export = ansiStyles;

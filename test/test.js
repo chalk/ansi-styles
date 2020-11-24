@@ -27,38 +27,24 @@ test('don\'t pollute other objects', t => {
 	t.not(obj1.foo, obj2.foo);
 });
 
-test('all color types are always available', t => {
-	const {ansi256, ansi16m} = style.color;
-
-	t.truthy(ansi256);
-	t.truthy(ansi256.ansi256);
-
-	t.truthy(ansi16m);
-	t.truthy(ansi16m.ansi256);
-
-	// There are no such things as ansi16m source colors
-	t.falsy(ansi256.ansi16m);
-	t.falsy(ansi16m.ansi16m);
-});
-
 test('support conversion to ansi (256 colors)', t => {
-	t.is(style.color.ansi256.rgb(255, 255, 255), '\u001B[38;5;231m');
-	t.is(style.color.ansi256.hex('#990099'), '\u001B[38;5;127m');
-	t.is(style.color.ansi256.hex('#FF00FF'), '\u001B[38;5;201m');
+	t.is(style.color.ansi256(style.rgbToAnsi256([255, 255, 255])), '\u001B[38;5;231m');
+	t.is(style.color.ansi256(style.hexToAnsi256('#990099')), '\u001B[38;5;127m');
+	t.is(style.color.ansi256(style.hexToAnsi256('#FF00FF')), '\u001B[38;5;201m');
 
-	t.is(style.bgColor.ansi256.rgb(255, 255, 255), '\u001B[48;5;231m');
-	t.is(style.bgColor.ansi256.hex('#990099'), '\u001B[48;5;127m');
-	t.is(style.bgColor.ansi256.hex('#FF00FF'), '\u001B[48;5;201m');
+	t.is(style.bgColor.ansi256(style.rgbToAnsi256([255, 255, 255])), '\u001B[48;5;231m');
+	t.is(style.bgColor.ansi256(style.hexToAnsi256('#990099')), '\u001B[48;5;127m');
+	t.is(style.bgColor.ansi256(style.hexToAnsi256('#FF00FF')), '\u001B[48;5;201m');
 });
 
 test('support conversion to ansi (16 million colors)', t => {
-	t.is(style.color.ansi16m.rgb(255, 255, 255), '\u001B[38;2;255;255;255m');
-	t.is(style.color.ansi16m.hex('#990099'), '\u001B[38;2;153;0;153m');
-	t.is(style.color.ansi16m.hex('#FF00FF'), '\u001B[38;2;255;0;255m');
+	t.is(style.color.ansi16m([255, 255, 255]), '\u001B[38;2;255;255;255m');
+	t.is(style.color.ansi16m(style.hexToRgb('#990099')), '\u001B[38;2;153;0;153m');
+	t.is(style.color.ansi16m(style.hexToRgb('#FF00FF')), '\u001B[38;2;255;0;255m');
 
-	t.is(style.bgColor.ansi16m.rgb(255, 255, 255), '\u001B[48;2;255;255;255m');
-	t.is(style.bgColor.ansi16m.hex('#990099'), '\u001B[48;2;153;0;153m');
-	t.is(style.bgColor.ansi16m.hex('#FF00FF'), '\u001B[48;2;255;0;255m');
+	t.is(style.bgColor.ansi16m([255, 255, 255]), '\u001B[48;2;255;255;255m');
+	t.is(style.bgColor.ansi16m(style.hexToRgb('#990099')), '\u001B[48;2;153;0;153m');
+	t.is(style.bgColor.ansi16m(style.hexToRgb('#FF00FF')), '\u001B[48;2;255;0;255m');
 });
 
 test('16/256/16m color close escapes', t => {
@@ -75,5 +61,5 @@ test('export raw ANSI escape codes', t => {
 });
 
 test('rgb -> truecolor is stubbed', t => {
-	t.is(style.color.ansi16m.rgb(123, 45, 67), '\u001B[38;2;123;45;67m');
+	t.is(style.color.ansi16m([123, 45, 67]), '\u001B[38;2;123;45;67m');
 });
