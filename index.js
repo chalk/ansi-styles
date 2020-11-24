@@ -99,6 +99,8 @@ function assembleStyles() {
 	styles.bgColor.ansi256 = wrapAnsi256(ANSI_BACKGROUND_OFFSET);
 	styles.bgColor.ansi16m = wrapAnsi16m(ANSI_BACKGROUND_OFFSET);
 
+	// From https://github.com/Qix-/color-convert/blob/3f0e0d4e92e235796ccb17f6e85c72094a651f49/conversions.js
+	
 	styles.rgbToAnsi256 = ([red, green, blue]) => {
 		// We use the extended greyscale palette here, with the exception of
 		// black and white. normal palette only has 4 greyscale shades.
