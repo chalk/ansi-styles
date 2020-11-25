@@ -128,7 +128,7 @@ declare namespace ansiStyles {
 		/**
 		Convert from the RGB color space to the ANSI 256 color space.
 
-		@param rgb (`0`-`255`)
+		@param rgb (`0...255`)
 		*/
 		rgbToAnsi256(rgb: readonly [number, number, number]): number;
 
