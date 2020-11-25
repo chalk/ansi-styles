@@ -139,7 +139,7 @@ declare namespace ansiStyles {
 
 		@param hex - A hexadecimal string containing RGB data.
 		*/
-		hexToRgb(hex: string): [number, number, number];
+		hexToRgb(hex: string): [red: number, green: number, blue: number];
 
 		/**
 		Convert from the RGB HEX color space to the ANSI 256 color space.
