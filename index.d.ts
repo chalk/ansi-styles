@@ -128,23 +128,23 @@ declare namespace ansiStyles {
 		/**
 		Convert from the RGB color space to the ANSI 256 color space.
 
-		@param red (`0...255`)
-		@param green (`0...255`)
-		@param blue (`0...255`)
+		@param red - (`0...255`)
+		@param green - (`0...255`)
+		@param blue - (`0...255`)
 		*/
 		rgbToAnsi256(red: number, green: number, blue: number): number;
 
 		/**
 		Convert from the RGB HEX color space to the RGB color space.
 
-		@param hex A hexadecimal string containing RGB data.
+		@param hex - A hexadecimal string containing RGB data.
 		*/
 		hexToRgb(hex: string): [number, number, number];
 
 		/**
 		Convert from the RGB HEX color space to the ANSI 256 color space.
 
-		@param hex A hexadecimal string containing RGB data.
+		@param hex - A hexadecimal string containing RGB data.
 		*/
 		hexToAnsi256(hex: string): number;
 	}
