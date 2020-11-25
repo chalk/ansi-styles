@@ -12,7 +12,7 @@ declare namespace ansiStyles {
 	}
 
 	interface ColorBase {
-		ansi256(ansi256: number): string;
+		ansi256(code: number): string;
 
 		ansi16m(red: number, green: number, blue: number): string;
 
