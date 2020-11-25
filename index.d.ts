@@ -14,7 +14,7 @@ declare namespace ansiStyles {
 	interface ColorBase {
 		ansi256(ansi256: number): string;
 
-		ansi16m(rgb: readonly [number, number, number]): string;
+		ansi16m(red: number, green: number, blue: number): string;
 
 		/**
 		The ANSI terminal control sequence for ending this color.
@@ -128,9 +128,11 @@ declare namespace ansiStyles {
 		/**
 		Convert from the RGB color space to the ANSI 256 color space.
 
-		@param rgb (`0...255`)
+		@param red (`0...255`)
+		@param green (`0...255`)
+		@param blue (`0...255`)
 		*/
-		rgbToAnsi256(rgb: readonly [number, number, number]): number;
+		rgbToAnsi256(red: number, green: number, blue: number): number;
 
 		/**
 		Convert from the RGB HEX color space to the RGB color space.

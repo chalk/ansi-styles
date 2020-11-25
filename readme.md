@@ -25,8 +25,8 @@ console.log(`${style.green.open}Hello world!${style.green.close}`);
 //       may be degraded to fit that color palette. This means terminals
 //       that do not support 16 million colors will best-match the
 //       original color.
-console.log(style.color.ansi256.rgb(199, 20, 250) + 'Hello world!' + style.color.close);
-console.log(style.color.ansi16m.hex('#abcdef') + 'Hello world!' + style.color.close);
+console.log(`${style.color.ansi256(style.rgbToAnsi256(199, 20, 250))}Hello World${style.color.close}`)
+console.log(`${style.color.ansi16m(...style.hexToRgb('#abcdef'))}Hello World${style.color.close}`)
 ```
 
 ## API
@@ -120,11 +120,11 @@ The following color spaces from `color-convert` are supported:
 To use these, call the associated conversion function with the intended output, for example:
 
 ```js
-style.color.ansi256(style.rgbToAnsi256([100, 200, 15])); // RGB to 256 color ansi foreground code
+style.color.ansi256(style.rgbToAnsi256(100, 200, 15)); // RGB to 256 color ansi foreground code
 style.bgColor.ansi256(style.hexToAnsi256('#C0FFEE')); // HEX to 256 color ansi foreground code
 
-style.color.ansi16m([100, 200, 15]); // RGB to 16 million color foreground code
-style.bgColor.ansi16m(style.hexToRgb('#C0FFEE')); // Hex (RGB) to 16 million color foreground code
+style.color.ansi16m(100, 200, 15); // RGB to 16 million color foreground code
+style.bgColor.ansi16m(...style.hexToRgb('#C0FFEE')); // Hex (RGB) to 16 million color foreground code
 ```
 
 ## Related

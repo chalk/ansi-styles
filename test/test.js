@@ -28,23 +28,23 @@ test('don\'t pollute other objects', t => {
 });
 
 test('support conversion to ansi (256 colors)', t => {
-	t.is(style.color.ansi256(style.rgbToAnsi256([255, 255, 255])), '\u001B[38;5;231m');
+	t.is(style.color.ansi256(style.rgbToAnsi256(255, 255, 255)), '\u001B[38;5;231m');
 	t.is(style.color.ansi256(style.hexToAnsi256('#990099')), '\u001B[38;5;127m');
 	t.is(style.color.ansi256(style.hexToAnsi256('#FF00FF')), '\u001B[38;5;201m');
 
-	t.is(style.bgColor.ansi256(style.rgbToAnsi256([255, 255, 255])), '\u001B[48;5;231m');
+	t.is(style.bgColor.ansi256(style.rgbToAnsi256(255, 255, 255)), '\u001B[48;5;231m');
 	t.is(style.bgColor.ansi256(style.hexToAnsi256('#990099')), '\u001B[48;5;127m');
 	t.is(style.bgColor.ansi256(style.hexToAnsi256('#FF00FF')), '\u001B[48;5;201m');
 });
 
 test('support conversion to ansi (16 million colors)', t => {
-	t.is(style.color.ansi16m([255, 255, 255]), '\u001B[38;2;255;255;255m');
-	t.is(style.color.ansi16m(style.hexToRgb('#990099')), '\u001B[38;2;153;0;153m');
-	t.is(style.color.ansi16m(style.hexToRgb('#FF00FF')), '\u001B[38;2;255;0;255m');
+	t.is(style.color.ansi16m(255, 255, 255), '\u001B[38;2;255;255;255m');
+	t.is(style.color.ansi16m(...style.hexToRgb('#990099')), '\u001B[38;2;153;0;153m');
+	t.is(style.color.ansi16m(...style.hexToRgb('#FF00FF')), '\u001B[38;2;255;0;255m');
 
-	t.is(style.bgColor.ansi16m([255, 255, 255]), '\u001B[48;2;255;255;255m');
-	t.is(style.bgColor.ansi16m(style.hexToRgb('#990099')), '\u001B[48;2;153;0;153m');
-	t.is(style.bgColor.ansi16m(style.hexToRgb('#FF00FF')), '\u001B[48;2;255;0;255m');
+	t.is(style.bgColor.ansi16m(255, 255, 255), '\u001B[48;2;255;255;255m');
+	t.is(style.bgColor.ansi16m(...style.hexToRgb('#990099')), '\u001B[48;2;153;0;153m');
+	t.is(style.bgColor.ansi16m(...style.hexToRgb('#FF00FF')), '\u001B[48;2;255;0;255m');
 });
 
 test('16/256/16m color close escapes', t => {
@@ -61,5 +61,5 @@ test('export raw ANSI escape codes', t => {
 });
 
 test('rgb -> truecolor is stubbed', t => {
-	t.is(style.color.ansi16m([123, 45, 67]), '\u001B[38;2;123;45;67m');
+	t.is(style.color.ansi16m(123, 45, 67), '\u001B[38;2;123;45;67m');
 });
