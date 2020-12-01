@@ -11,7 +11,7 @@
 		"url": "sindresorhus.com"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=10"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd",
@@ -43,9 +43,6 @@
 		"command-line",
 		"text"
 	],
-	"dependencies": {
-		"color-convert": "^2.0.1"
-	},
 	"devDependencies": {
 		"@types/color-convert": "^1.9.0",
 		"ava": "^2.3.0",

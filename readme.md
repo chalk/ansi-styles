@@ -25,9 +25,8 @@ console.log(`${style.green.open}Hello world!${style.green.close}`);
 //       may be degraded to fit that color palette. This means terminals
 //       that do not support 16 million colors will best-match the
 //       original color.
-console.log(style.bgColor.ansi.hsl(120, 80, 72) + 'Hello world!' + style.bgColor.close);
-console.log(style.color.ansi256.rgb(199, 20, 250) + 'Hello world!' + style.color.close);
-console.log(style.color.ansi16m.hex('#abcdef') + 'Hello world!' + style.color.close);
+console.log(`${style.color.ansi256(style.rgbToAnsi256(199, 20, 250))}Hello World${style.color.close}`)
+console.log(`${style.color.ansi16m(...style.hexToRgb('#abcdef'))}Hello World${style.color.close}`)
 ```
 
 ## API
@@ -110,30 +109,22 @@ console.log(style.codes.get(36));
 
 ## [256 / 16 million (TrueColor) support](https://gist.github.com/XVilka/8346728)
 
-`ansi-styles` uses the [`color-convert`](https://github.com/Qix-/color-convert) package to allow for converting between various colors and ANSI escapes, with support for 256 and 16 million colors.
+`ansi-styles` allows converting between various color formats and ANSI escapes, with support for 256 and 16 million colors.
 
 The following color spaces from `color-convert` are supported:
 
 - `rgb`
 - `hex`
-- `keyword`
-- `hsl`
-- `hsv`
-- `hwb`
-- `ansi`
 - `ansi256`
 
 To use these, call the associated conversion function with the intended output, for example:
 
 ```js
-style.color.ansi.rgb(100, 200, 15); // RGB to 16 color ansi foreground code
-style.bgColor.ansi.rgb(100, 200, 15); // RGB to 16 color ansi background code
+style.color.ansi256(style.rgbToAnsi256(100, 200, 15)); // RGB to 256 color ansi foreground code
+style.bgColor.ansi256(style.hexToAnsi256('#C0FFEE')); // HEX to 256 color ansi foreground code
 
-style.color.ansi256.hsl(120, 100, 60); // HSL to 256 color ansi foreground code
-style.bgColor.ansi256.hsl(120, 100, 60); // HSL to 256 color ansi foreground code
-
-style.color.ansi16m.hex('#C0FFEE'); // Hex (RGB) to 16 million color foreground code
-style.bgColor.ansi16m.hex('#C0FFEE'); // Hex (RGB) to 16 million color background code
+style.color.ansi16m(100, 200, 15); // RGB to 16 million color foreground code
+style.bgColor.ansi16m(...style.hexToRgb('#C0FFEE')); // Hex (RGB) to 16 million color foreground code
 ```
 
 ## Related

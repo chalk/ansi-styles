@@ -1,214 +1,4 @@
-declare type CSSColor =
-	| 'aliceblue'
-	| 'antiquewhite'
-	| 'aqua'
-	| 'aquamarine'
-	| 'azure'
-	| 'beige'
-	| 'bisque'
-	| 'black'
-	| 'blanchedalmond'
-	| 'blue'
-	| 'blueviolet'
-	| 'brown'
-	| 'burlywood'
-	| 'cadetblue'
-	| 'chartreuse'
-	| 'chocolate'
-	| 'coral'
-	| 'cornflowerblue'
-	| 'cornsilk'
-	| 'crimson'
-	| 'cyan'
-	| 'darkblue'
-	| 'darkcyan'
-	| 'darkgoldenrod'
-	| 'darkgray'
-	| 'darkgreen'
-	| 'darkgrey'
-	| 'darkkhaki'
-	| 'darkmagenta'
-	| 'darkolivegreen'
-	| 'darkorange'
-	| 'darkorchid'
-	| 'darkred'
-	| 'darksalmon'
-	| 'darkseagreen'
-	| 'darkslateblue'
-	| 'darkslategray'
-	| 'darkslategrey'
-	| 'darkturquoise'
-	| 'darkviolet'
-	| 'deeppink'
-	| 'deepskyblue'
-	| 'dimgray'
-	| 'dimgrey'
-	| 'dodgerblue'
-	| 'firebrick'
-	| 'floralwhite'
-	| 'forestgreen'
-	| 'fuchsia'
-	| 'gainsboro'
-	| 'ghostwhite'
-	| 'gold'
-	| 'goldenrod'
-	| 'gray'
-	| 'green'
-	| 'greenyellow'
-	| 'grey'
-	| 'honeydew'
-	| 'hotpink'
-	| 'indianred'
-	| 'indigo'
-	| 'ivory'
-	| 'khaki'
-	| 'lavender'
-	| 'lavenderblush'
-	| 'lawngreen'
-	| 'lemonchiffon'
-	| 'lightblue'
-	| 'lightcoral'
-	| 'lightcyan'
-	| 'lightgoldenrodyellow'
-	| 'lightgray'
-	| 'lightgreen'
-	| 'lightgrey'
-	| 'lightpink'
-	| 'lightsalmon'
-	| 'lightseagreen'
-	| 'lightskyblue'
-	| 'lightslategray'
-	| 'lightslategrey'
-	| 'lightsteelblue'
-	| 'lightyellow'
-	| 'lime'
-	| 'limegreen'
-	| 'linen'
-	| 'magenta'
-	| 'maroon'
-	| 'mediumaquamarine'
-	| 'mediumblue'
-	| 'mediumorchid'
-	| 'mediumpurple'
-	| 'mediumseagreen'
-	| 'mediumslateblue'
-	| 'mediumspringgreen'
-	| 'mediumturquoise'
-	| 'mediumvioletred'
-	| 'midnightblue'
-	| 'mintcream'
-	| 'mistyrose'
-	| 'moccasin'
-	| 'navajowhite'
-	| 'navy'
-	| 'oldlace'
-	| 'olive'
-	| 'olivedrab'
-	| 'orange'
-	| 'orangered'
-	| 'orchid'
-	| 'palegoldenrod'
-	| 'palegreen'
-	| 'paleturquoise'
-	| 'palevioletred'
-	| 'papayawhip'
-	| 'peachpuff'
-	| 'peru'
-	| 'pink'
-	| 'plum'
-	| 'powderblue'
-	| 'purple'
-	| 'rebeccapurple'
-	| 'red'
-	| 'rosybrown'
-	| 'royalblue'
-	| 'saddlebrown'
-	| 'salmon'
-	| 'sandybrown'
-	| 'seagreen'
-	| 'seashell'
-	| 'sienna'
-	| 'silver'
-	| 'skyblue'
-	| 'slateblue'
-	| 'slategray'
-	| 'slategrey'
-	| 'snow'
-	| 'springgreen'
-	| 'steelblue'
-	| 'tan'
-	| 'teal'
-	| 'thistle'
-	| 'tomato'
-	| 'turquoise'
-	| 'violet'
-	| 'wheat'
-	| 'white'
-	| 'whitesmoke'
-	| 'yellow'
-	| 'yellowgreen';
-
 declare namespace ansiStyles {
-	interface ColorConvert {
-		/**
-		The RGB color space.
-
-		@param red - (`0`-`255`)
-		@param green - (`0`-`255`)
-		@param blue - (`0`-`255`)
-		*/
-		rgb(red: number, green: number, blue: number): string;
-
-		/**
-		The RGB HEX color space.
-
-		@param hex - A hexadecimal string containing RGB data.
-		*/
-		hex(hex: string): string;
-
-		/**
-		@param keyword - A CSS color name.
-		*/
-		keyword(keyword: CSSColor): string;
-
-		/**
-		The HSL color space.
-
-		@param hue - (`0`-`360`)
-		@param saturation - (`0`-`100`)
-		@param lightness - (`0`-`100`)
-		*/
-		hsl(hue: number, saturation: number, lightness: number): string;
-
-		/**
-		The HSV color space.
-
-		@param hue - (`0`-`360`)
-		@param saturation - (`0`-`100`)
-		@param value - (`0`-`100`)
-		*/
-		hsv(hue: number, saturation: number, value: number): string;
-
-		/**
-		The HSV color space.
-
-		@param hue - (`0`-`360`)
-		@param whiteness - (`0`-`100`)
-		@param blackness - (`0`-`100`)
-		*/
-		hwb(hue: number, whiteness: number, blackness: number): string;
-
-		/**
-		Use a [4-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#3/4-bit) to set text color.
-		*/
-		ansi(ansi: number): string;
-
-		/**
-		Use an [8-bit unsigned number](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit) to set text color.
-		*/
-		ansi256(ansi: number): string;
-	}
-
 	interface CSPair {
 		/**
 		The ANSI terminal control sequence for starting this style.
@@ -222,9 +12,9 @@ declare namespace ansiStyles {
 	}
 
 	interface ColorBase {
-		readonly ansi: ColorConvert;
-		readonly ansi256: ColorConvert;
-		readonly ansi16m: ColorConvert;
+		ansi256(code: number): string;
+
+		ansi16m(red: number, green: number, blue: number): string;
 
 		/**
 		The ANSI terminal control sequence for ending this color.
@@ -333,6 +123,31 @@ declare namespace ansiStyles {
 		readonly bgMagentaBright: CSPair;
 		readonly bgWhiteBright: CSPair;
 	}
+
+	interface ConvertColor {
+		/**
+		Convert from the RGB color space to the ANSI 256 color space.
+
+		@param red - (`0...255`)
+		@param green - (`0...255`)
+		@param blue - (`0...255`)
+		*/
+		rgbToAnsi256(red: number, green: number, blue: number): number;
+
+		/**
+		Convert from the RGB HEX color space to the RGB color space.
+
+		@param hex - A hexadecimal string containing RGB data.
+		*/
+		hexToRgb(hex: string): [red: number, green: number, blue: number];
+
+		/**
+		Convert from the RGB HEX color space to the ANSI 256 color space.
+
+		@param hex - A hexadecimal string containing RGB data.
+		*/
+		hexToAnsi256(hex: string): number;
+	}
 }
 
 declare const ansiStyles: {
@@ -340,6 +155,6 @@ declare const ansiStyles: {
 	readonly color: ansiStyles.ForegroundColor & ansiStyles.ColorBase;
 	readonly bgColor: ansiStyles.BackgroundColor & ansiStyles.ColorBase;
 	readonly codes: ReadonlyMap<number, number>;
-} & ansiStyles.BackgroundColor & ansiStyles.ForegroundColor & ansiStyles.Modifier;
+} & ansiStyles.BackgroundColor & ansiStyles.ForegroundColor & ansiStyles.Modifier & ansiStyles.ConvertColor;
 
 export = ansiStyles;
