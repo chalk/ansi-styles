@@ -62,6 +62,7 @@ expectType<ansiStyles.CSPair>(ansiStyles.modifier.italic);
 expectType<ansiStyles.CSPair>(ansiStyles.modifier.reset);
 expectType<ansiStyles.CSPair>(ansiStyles.modifier.strikethrough);
 expectType<ansiStyles.CSPair>(ansiStyles.modifier.underline);
+expectType<ansiStyles.CSPair>(ansiStyles.modifier.overline);
 
 // -- Top level --
 // --- Foreground color ---

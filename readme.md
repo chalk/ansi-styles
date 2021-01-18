@@ -42,6 +42,7 @@ Each style has an `open` and `close` property.
 - `dim`
 - `italic` *(Not widely supported)*
 - `underline`
+- `overline` *(Not widely supported)*
 - `inverse`
 - `hidden`
 - `strikethrough` *(Not widely supported)*

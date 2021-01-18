@@ -49,6 +49,11 @@ declare namespace ansiStyles {
 		readonly underline: CSPair;
 
 		/**
+		Make text overline. (Not widely supported)
+		*/
+		readonly overline: CSPair;
+
+		/**
 		Inverse background and foreground colors.
 		*/
 		readonly inverse: CSPair;
@@ -139,7 +144,7 @@ declare namespace ansiStyles {
 
 		@param hex - A hexadecimal string containing RGB data.
 		*/
-		hexToRgb(hex: string): [red: number, green: number, blue: number];
+		hexToRgb(hex: string): [number, number, number];
 
 		/**
 		Convert from the RGB HEX color space to the ANSI 256 color space.
