@@ -49,7 +49,7 @@ declare namespace ansiStyles {
 		readonly underline: CSPair;
 
 		/**
-		Make text overline. Supported on VTE-based terminals, the GNOME terminal, mintty, and Git Bash
+		Make text overline. Supported on VTE-based terminals, the GNOME terminal, mintty, and Git Bash.
 		*/
 		readonly overline: CSPair;
 
