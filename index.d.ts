@@ -12,14 +12,14 @@ declare namespace ansiStyles {
 	}
 
 	interface ColorBase {
-		ansi256(code: number): string;
-
-		ansi16m(red: number, green: number, blue: number): string;
-
 		/**
 		The ANSI terminal control sequence for ending this color.
 		*/
 		readonly close: string;
+
+		ansi256(code: number): string;
+
+		ansi16m(red: number, green: number, blue: number): string;
 	}
 
 	interface Modifier {

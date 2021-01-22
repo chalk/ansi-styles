@@ -1,5 +1,5 @@
 import test from 'ava';
-import style from '..';
+import style from '../index.js';
 
 test('return ANSI escape codes', t => {
 	t.is(style.green.open, '\u001B[32m');
@@ -20,11 +20,11 @@ test('groups should not be enumerable', t => {
 });
 
 test('don\'t pollute other objects', t => {
-	const obj1 = require('..');
-	const obj2 = require('..');
+	const object1 = require('..');
+	const object2 = require('..');
 
-	obj1.foo = true;
-	t.not(obj1.foo, obj2.foo);
+	object1.foo = true;
+	t.not(object1.foo, object2.foo);
 });
 
 test('support conversion to ansi (256 colors)', t => {
