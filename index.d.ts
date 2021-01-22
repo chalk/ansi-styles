@@ -49,6 +49,13 @@ declare namespace ansiStyles {
 		readonly underline: CSPair;
 
 		/**
+		Make text overline.
+
+		Supported on VTE-based terminals, the GNOME terminal, mintty, and Git Bash.
+		*/
+		readonly overline: CSPair;
+
+		/**
 		Inverse background and foreground colors.
 		*/
 		readonly inverse: CSPair;
