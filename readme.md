@@ -42,7 +42,7 @@ Each style has an `open` and `close` property.
 - `dim`
 - `italic` *(Not widely supported)*
 - `underline`
-- `overline` *Supported on VTE-based terminals, the GNOME terminal, mintty, and Git Bash*
+- `overline` *Supported on VTE-based terminals, the GNOME terminal, mintty, and Git Bash.*
 - `inverse`
 - `hidden`
 - `strikethrough` *(Not widely supported)*
