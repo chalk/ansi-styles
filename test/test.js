@@ -27,6 +27,16 @@ test('don\'t pollute other objects', t => {
 	t.not(object1.foo, object2.foo);
 });
 
+test('support conversion to ansi 16 colors', t => {
+	t.is(style.color.ansi(style.ansi256ToAnsi(style.rgbToAnsi256(255, 255, 255))), '\u001B[97m');
+	t.is(style.color.ansi(style.ansi256ToAnsi(style.hexToAnsi256('#990099'))), '\u001B[35m');
+	t.is(style.color.ansi(style.ansi256ToAnsi(style.hexToAnsi256('#FF00FF'))), '\u001B[95m');
+
+	t.is(style.bgColor.ansi(style.ansi256ToAnsi(style.rgbToAnsi256(255, 255, 255))), '\u001B[107m');
+	t.is(style.bgColor.ansi(style.ansi256ToAnsi(style.hexToAnsi256('#990099'))), '\u001B[45m');
+	t.is(style.bgColor.ansi(style.ansi256ToAnsi(style.hexToAnsi256('#FF00FF'))), '\u001B[105m');
+});
+
 test('support conversion to ansi (256 colors)', t => {
 	t.is(style.color.ansi256(style.rgbToAnsi256(255, 255, 255)), '\u001B[38;5;231m');
 	t.is(style.color.ansi256(style.hexToAnsi256('#990099')), '\u001B[38;5;127m');

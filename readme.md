@@ -27,6 +27,7 @@ console.log(`${style.green.open}Hello world!${style.green.close}`);
 //       original color.
 console.log(`${style.color.ansi256(style.rgbToAnsi256(199, 20, 250))}Hello World${style.color.close}`)
 console.log(`${style.color.ansi16m(...style.hexToRgb('#abcdef'))}Hello World${style.color.close}`)
+console.log(`${style.color.ansi(style.ansi256ToAnsi(87))}Hello World${style.color.close}`)
 ```
 
 ## API
@@ -123,9 +124,11 @@ To use these, call the associated conversion function with the intended output, 
 ```js
 style.color.ansi256(style.rgbToAnsi256(100, 200, 15)); // RGB to 256 color ansi foreground code
 style.bgColor.ansi256(style.hexToAnsi256('#C0FFEE')); // HEX to 256 color ansi foreground code
+style.color.ansi(style.ansi256ToAnsi(style.rgbToAnsi256(100, 200, 15))); // RGB to 16 color ansi foreground code
 
 style.color.ansi16m(100, 200, 15); // RGB to 16 million color foreground code
 style.bgColor.ansi16m(...style.hexToRgb('#C0FFEE')); // Hex (RGB) to 16 million color foreground code
+style.bgColor.ansi(style.ansi256ToAnsi(style.rgbToAnsi256(100, 200, 15))); // RGB to 16 color ansi background code
 ```
 
 ## Related

@@ -1,6 +1,10 @@
 'use strict';
 
+const {ansi256ToAnsi} = require('./ansi-256-to-ansi');
+
 const ANSI_BACKGROUND_OFFSET = 10;
+
+const wrapAnsi = (offset = 0) => code => `\u001B[${offset + code + ((code >= 8) ? 82 : 30)}m`;
 
 const wrapAnsi256 = (offset = 0) => code => `\u001B[${38 + offset};5;${code}m`;
 
@@ -95,8 +99,10 @@ function assembleStyles() {
 	styles.color.close = '\u001B[39m';
 	styles.bgColor.close = '\u001B[49m';
 
+	styles.color.ansi = wrapAnsi();
 	styles.color.ansi256 = wrapAnsi256();
 	styles.color.ansi16m = wrapAnsi16m();
+	styles.bgColor.ansi = wrapAnsi(ANSI_BACKGROUND_OFFSET);
 	styles.bgColor.ansi256 = wrapAnsi256(ANSI_BACKGROUND_OFFSET);
 	styles.bgColor.ansi16m = wrapAnsi16m(ANSI_BACKGROUND_OFFSET);
 
@@ -144,6 +150,8 @@ function assembleStyles() {
 	};
 
 	styles.hexToAnsi256 = hex => styles.rgbToAnsi256(...styles.hexToRgb(hex));
+
+	styles.ansi256ToAnsi = code => ansi256ToAnsi[code];
 
 	return styles;
 }

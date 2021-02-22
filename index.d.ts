@@ -17,6 +17,8 @@ declare namespace ansiStyles {
 		*/
 		readonly close: string;
 
+		ansi(code: number): string;
+
 		ansi256(code: number): string;
 
 		ansi16m(red: number, green: number, blue: number): string;
@@ -154,6 +156,14 @@ declare namespace ansiStyles {
 		@param hex - A hexadecimal string containing RGB data.
 		*/
 		hexToAnsi256(hex: string): number;
+
+		/**
+		Convert from the ANSI 256 color space to the ANSI basic color space.
+
+		@param ansi256 - A number between 0 and 255, inclusive.
+		@returns - The ansi color code (e.g. 34 for blue).
+		*/
+		ansi256ToAnsi(ansi: number): number;
 	}
 }
 
