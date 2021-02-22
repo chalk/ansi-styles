@@ -4,7 +4,7 @@ const {ansi256ToAnsi} = require('./ansi-256-to-ansi');
 
 const ANSI_BACKGROUND_OFFSET = 10;
 
-const wrapAnsi = (offset = 0) => code => `\u001B[${offset + code + ((code >= 8) ? 82 : 30)}m`;
+const wrapAnsi = (offset = 0) => code => `\u001B[${offset + code}m`;
 
 const wrapAnsi256 = (offset = 0) => code => `\u001B[${38 + offset};5;${code}m`;
 
