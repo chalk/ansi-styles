@@ -20,9 +20,9 @@ const style = require('ansi-styles');
 console.log(`${style.green.open}Hello world!${style.green.close}`);
 
 
-// Color conversion between 16/256/truecolor
-// NOTE: If conversion goes to 16 colors or 256 colors, the original color
-//       may be degraded to fit that color palette. This means terminals
+// Color conversion between 256/truecolor
+// NOTE: When converting from truecolor to 256 colors, the original color
+//       may be degraded to fit the new color palette. This means terminals
 //       that do not support 16 million colors will best-match the
 //       original color.
 console.log(`${style.color.ansi256(style.rgbToAnsi256(199, 20, 250))}Hello World${style.color.close}`)
