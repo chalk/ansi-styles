@@ -101,49 +101,58 @@ function assembleStyles() {
 	styles.bgColor.ansi16m = wrapAnsi16m(ANSI_BACKGROUND_OFFSET);
 
 	// From https://github.com/Qix-/color-convert/blob/3f0e0d4e92e235796ccb17f6e85c72094a651f49/conversions.js
-	styles.rgbToAnsi256 = (red, green, blue) => {
-		// We use the extended greyscale palette here, with the exception of
-		// black and white. normal palette only has 4 greyscale shades.
-		if (red === green && green === blue) {
-			if (red < 8) {
-				return 16;
-			}
+	Object.defineProperties(styles, {
+		rgbToAnsi256: {
+			value: (red, green, blue) => {
+				// We use the extended greyscale palette here, with the exception of
+				// black and white. normal palette only has 4 greyscale shades.
+				if (red === green && green === blue) {
+					if (red < 8) {
+						return 16;
+					}
 
-			if (red > 248) {
-				return 231;
-			}
+					if (red > 248) {
+						return 231;
+					}
 
-			return Math.round(((red - 8) / 247) * 24) + 232;
+					return Math.round(((red - 8) / 247) * 24) + 232;
+				}
+
+				return 16 +
+					(36 * Math.round(red / 255 * 5)) +
+					(6 * Math.round(green / 255 * 5)) +
+					Math.round(blue / 255 * 5);
+			},
+			enumerable: false
+		},
+		hexToRgb: {
+			value: hex => {
+				const matches = /(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(hex.toString(16));
+				if (!matches) {
+					return [0, 0, 0];
+				}
+
+				let {colorString} = matches.groups;
+
+				if (colorString.length === 3) {
+					colorString = colorString.split('').map(character => character + character).join('');
+				}
+
+				const integer = Number.parseInt(colorString, 16);
+
+				return [
+					(integer >> 16) & 0xFF,
+					(integer >> 8) & 0xFF,
+					integer & 0xFF
+				];
+			},
+			enumerable: false
+		},
+		hexToAnsi256: {
+			value: hex => styles.rgbToAnsi256(...styles.hexToRgb(hex)),
+			enumerable: false
 		}
-
-		return 16 +
-			(36 * Math.round(red / 255 * 5)) +
-			(6 * Math.round(green / 255 * 5)) +
-			Math.round(blue / 255 * 5);
-	};
-
-	styles.hexToRgb = hex => {
-		const matches = /(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(hex.toString(16));
-		if (!matches) {
-			return [0, 0, 0];
-		}
-
-		let {colorString} = matches.groups;
-
-		if (colorString.length === 3) {
-			colorString = colorString.split('').map(character => character + character).join('');
-		}
-
-		const integer = Number.parseInt(colorString, 16);
-
-		return [
-			(integer >> 16) & 0xFF,
-			(integer >> 8) & 0xFF,
-			integer & 0xFF
-		];
-	};
-
-	styles.hexToAnsi256 = hex => styles.rgbToAnsi256(...styles.hexToRgb(hex));
+	});
 
 	return styles;
 }
