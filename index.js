@@ -1,5 +1,3 @@
-'use strict';
-
 const ANSI_BACKGROUND_OFFSET = 10;
 
 const wrapAnsi256 = (offset = 0) => code => `\u001B[${38 + offset};5;${code}m`;
@@ -157,8 +155,6 @@ function assembleStyles() {
 	return styles;
 }
 
-// Make the export immutable
-Object.defineProperty(module, 'exports', {
-	enumerable: true,
-	get: assembleStyles
-});
+const ansiStyles = assembleStyles();
+
+export default ansiStyles;
