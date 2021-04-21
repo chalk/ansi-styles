@@ -178,7 +178,7 @@ function assembleStyles() {
 					const remainder = code % 36;
 
 					red = Math.floor(code / 36) / 5;
-					green = Math.floor((code % 36) / 6) / 5;
+					green = Math.floor(remainder / 6) / 5;
 					blue = (remainder % 6) / 5;
 				}
 
