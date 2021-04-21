@@ -25,6 +25,7 @@ console.log(`${styles.green.open}Hello world!${styles.green.close}`);
 //       may be degraded to fit the new color palette. This means terminals
 //       that do not support 16 million colors will best-match the
 //       original color.
+console.log(`${styles.color.ansi(styles.rgbToAnsi(199, 20, 250))}Hello World${styles.color.close}`)
 console.log(`${styles.color.ansi256(styles.rgbToAnsi256(199, 20, 250))}Hello World${styles.color.close}`)
 console.log(`${styles.color.ansi16m(...styles.hexToRgb('#abcdef'))}Hello World${styles.color.close}`)
 ```
@@ -112,20 +113,24 @@ console.log(styles.codes.get(36));
 //=> 39
 ```
 
-## [256 / 16 million (TrueColor) support](https://gist.github.com/XVilka/8346728)
+## 16 / 256 / 16 million (TrueColor) support
 
-`ansi-styles` allows converting between various color formats and ANSI escapes, with support for 256 and 16 million colors.
+`ansi-styles` allows converting between various color formats and ANSI escapes, with support for 16, 256 and [16 million colors](https://gist.github.com/XVilka/8346728).
 
-The following color spaces from `color-convert` are supported:
+The following color spaces are supported:
 
 - `rgb`
 - `hex`
 - `ansi256`
+- `ansi`
 
 To use these, call the associated conversion function with the intended output, for example:
 
 ```js
 import styles from 'ansi-styles';
+
+styles.color.ansi(styles.rgbToAnsi(100, 200, 15)); // RGB to 16 color ansi foreground code
+styles.bgColor.ansi(styles.hexToAnsi('#C0FFEE')); // HEX to 16 color ansi foreground code
 
 styles.color.ansi256(styles.rgbToAnsi256(100, 200, 15)); // RGB to 256 color ansi foreground code
 styles.bgColor.ansi256(styles.hexToAnsi256('#C0FFEE')); // HEX to 256 color ansi foreground code

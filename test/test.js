@@ -19,6 +19,16 @@ test('groups should not be enumerable', t => {
 	t.false(Object.keys(ansiStyles).includes('modifier'));
 });
 
+test('support conversion to ansi (16 colors)', t => {
+	t.is(ansiStyles.color.ansi(ansiStyles.rgbToAnsi(255, 255, 255)), '\u001B[97m');
+	t.is(ansiStyles.color.ansi(ansiStyles.hexToAnsi('#990099')), '\u001B[35m');
+	t.is(ansiStyles.color.ansi(ansiStyles.hexToAnsi('#FF00FF')), '\u001B[95m');
+
+	t.is(ansiStyles.bgColor.ansi(ansiStyles.rgbToAnsi(255, 255, 255)), '\u001B[107m');
+	t.is(ansiStyles.bgColor.ansi(ansiStyles.hexToAnsi('#990099')), '\u001B[45m');
+	t.is(ansiStyles.bgColor.ansi(ansiStyles.hexToAnsi('#FF00FF')), '\u001B[105m');
+});
+
 test('support conversion to ansi (256 colors)', t => {
 	t.is(ansiStyles.color.ansi256(ansiStyles.rgbToAnsi256(255, 255, 255)), '\u001B[38;5;231m');
 	t.is(ansiStyles.color.ansi256(ansiStyles.hexToAnsi256('#990099')), '\u001B[38;5;127m');
