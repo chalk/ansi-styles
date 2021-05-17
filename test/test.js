@@ -2,10 +2,10 @@ import test from 'ava';
 import ansiStyles from '../index.js';
 
 test('return ANSI escape codes', t => {
-	t.is(ansiStyles.green.open, '\u001B[32m');
+	t.is(ansiStyles.green.close, '\u001B[32m');
 	t.is(ansiStyles.bgGreen.open, '\u001B[42m');
-	t.is(ansiStyles.green.close, '\u001B[39m');
-	t.is(ansiStyles.gray.open, ansiStyles.grey.open);
+	t.is(ansiStyles.green.open, '\u001B[39m');
+	t.is(ansiStyles.gray.close, ansiStyles.grey.open);
 });
 
 test('group related codes into categories', t => {
