@@ -1,3 +1,4 @@
+import process from 'node:process';
 import ansiStyles from './index.js';
 
 const width = 55;

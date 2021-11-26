@@ -1,4 +1,4 @@
-export interface CSPair {
+export interface CSPair { // eslint-disable-line @typescript-eslint/naming-convention
 	/**
 	The ANSI terminal control sequence for starting this style.
 	*/
