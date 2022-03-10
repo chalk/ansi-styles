@@ -19,6 +19,14 @@
 		"test": "xo && ava && tsd",
 		"screenshot": "svg-term --command='node screenshot' --out=screenshot.svg --padding=3 --width=55 --height=3 --at=1000 --no-cursor"
 	},
+	"xo": {
+		"space": true,
+		"rules": {
+			"prefer-regex-literals": "off",
+			"indent": "off",
+			"@typescript-eslint/indent": "off"
+		}
+	},
 	"files": [
 		"index.js",
 		"index.d.ts"
