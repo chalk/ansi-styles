@@ -129,7 +129,7 @@ function assembleStyles() {
 		},
 		hexToRgb: {
 			value: hex => {
-				const matches = /(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(hex.toString(16));
+				const matches = new RegExp('(?<colorString>[a-f\\d]{6}|[a-f\\d]{3})', 'i').exec(hex.toString(16));
 				if (!matches) {
 					return [0, 0, 0];
 				}
