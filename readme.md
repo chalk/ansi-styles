@@ -4,12 +4,12 @@
 
 You probably want the higher-level [chalk](https://github.com/chalk/chalk) module for styling your strings.
 
-<img src="screenshot.svg" width="900">
+![](screenshot.png)
 
 ## Install
 
-```
-$ npm install ansi-styles
+```sh
+npm install ansi-styles
 ```
 
 ## Usage

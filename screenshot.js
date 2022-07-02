@@ -8,7 +8,16 @@ for (const [key, value] of Object.entries(ansiStyles)) {
 	let code = value.open;
 	let projectedLength = lineLength + key.length + 1;
 
-	if (key === 'reset' || key === 'hidden' || key === 'grey' || key.includes('Bright')) {
+	// We skip `overline` as almost no terminal supports it so we cannot show it off.
+	if (
+		key === 'reset'
+			|| key === 'hidden'
+			|| key === 'grey'
+			|| key === 'bgGray'
+			|| key === 'bgGrey'
+			|| key === 'overline'
+			|| key.endsWith('Bright')
+	) {
 		continue;
 	}
 
