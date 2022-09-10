@@ -134,7 +134,7 @@ function assembleStyles() {
 					return [0, 0, 0];
 				}
 
-				let colorString = matches[0];
+				let [colorString] = matches;
 
 				if (colorString.length === 3) {
 					colorString = colorString.split('').map(character => character + character).join('');
