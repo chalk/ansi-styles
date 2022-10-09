@@ -43,12 +43,12 @@ All supported style strings are exposed as an array of strings for convenience. 
 This can be useful if you need to validate input:
 
 ```js
-import {modifiers, foregroundColors} from 'ansi-styles';
+import {modifierNames, foregroundColorNames} from 'ansi-styles';
 
-console.log(modifiers.includes('bold'));
+console.log(modifierNames.includes('bold'));
 //=> true
 
-console.log(foregroundColors.includes('pink'));
+console.log(foregroundColorNames.includes('pink'));
 //=> false
 ```
 
