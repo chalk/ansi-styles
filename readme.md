@@ -32,7 +32,25 @@ console.log(`${styles.color.ansi16m(...styles.hexToRgb('#abcdef'))}Hello World${
 
 ## API
 
+### `open` and `close`
+
 Each style has an `open` and `close` property.
+
+### modifiers, foregroundColors, backgroundColors, and colors
+
+All supported style strings are exposed as an array of strings for convenience. `colors` is the combination of `foregroundColors` and `backgroundColors`.
+
+This can be useful if you wrap Chalk and need to validate input:
+
+```js
+import {modifiers, foregroundColors} from 'ansi-styles';
+
+console.log(modifiers.includes('bold'));
+//=> true
+
+console.log(foregroundColors.includes('pink'));
+//=> false
+```
 
 ## Styles
 
