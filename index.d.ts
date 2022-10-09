@@ -132,6 +132,8 @@ export interface BackgroundColor {
 	readonly bgWhiteBright: CSPair;
 }
 
+export type Color = (ForegroundColor | BackgroundColor);
+
 export interface ConvertColor {
 	/**
 	Convert from the RGB color space to the ANSI 256 color space.
