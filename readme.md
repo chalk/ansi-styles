@@ -36,7 +36,7 @@ console.log(`${styles.color.ansi16m(...styles.hexToRgb('#abcdef'))}Hello World${
 
 Each style has an `open` and `close` property.
 
-### modifiers, foregroundColors, backgroundColors, and colors
+### `modifiers`, `foregroundColors`, `backgroundColors`, and `colors`
 
 All supported style strings are exposed as an array of strings for convenience. `colors` is the combination of `foregroundColors` and `backgroundColors`.
 
