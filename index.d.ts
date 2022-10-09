@@ -132,8 +132,6 @@ export interface BackgroundColor {
 	readonly bgWhiteBright: CSPair;
 }
 
-export type Color = (ForegroundColor | BackgroundColor);
-
 export interface ConvertColor {
 	/**
 	Convert from the RGB color space to the ANSI 256 color space.
@@ -182,6 +180,43 @@ export interface ConvertColor {
 	hexToAnsi(hex: string): number;
 }
 
+/**
+Basic modifiers.
+*/
+export type ModifierName =
+	| 'reset'
+	| 'bold'
+	| 'dim'
+	| 'italic'
+	| 'underline'
+	| 'overline'
+	| 'inverse'
+	| 'hidden'
+	| 'strikethrough'
+	| 'visible';
+
+type BasicColor = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
+type BrightColor = `${BasicColor}Bright`;
+type Grey = 'gray' | 'grey';
+
+/**
+Basic foreground colors.
+[More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
+*/
+export type ForegroundColorName = BasicColor | BrightColor | Grey;
+
+/**
+Basic background colors.
+[More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
+*/
+export type BackgroundColorName = `bg${Capitalize<ForegroundColorName>}`;
+
+/**
+Basic colors. The combination of foreground and background color names.
+[More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
+*/
+export type ColorName = ForegroundColor | BackgroundColor;
+
 declare const ansiStyles: {
 	readonly modifier: Modifier;
 	readonly color: ColorBase & ForegroundColor;
@@ -189,9 +224,24 @@ declare const ansiStyles: {
 	readonly codes: ReadonlyMap<number, number>;
 } & ForegroundColor & BackgroundColor & Modifier & ConvertColor;
 
-declare const modifiers: readonly Modifier[];
-declare const foregroundColors: readonly ForegroundColor[];
-declare const backgroundColors: readonly BackgroundColor[];
-declare const colors: readonly Color[];
+/**
+Basic modifier names.
+*/
+declare const modifierNames: readonly ModifierName[];
+
+/**
+Basic foreground color names.
+*/
+declare const foregroundColorNames: readonly ForegroundColorName[];
+
+/**
+Basic background color names.
+*/
+declare const backgroundColorNames: readonly BackgroundColorName[];
+
+/*
+Basic color names. The combination of foreground and background color names.
+*/
+declare const colorNames: readonly ColorName[];
 
 export default ansiStyles;
