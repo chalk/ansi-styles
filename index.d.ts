@@ -217,31 +217,31 @@ Basic colors. The combination of foreground and background color names.
 */
 export type ColorName = ForegroundColor | BackgroundColor;
 
+/**
+Basic modifier names.
+*/
+export const modifierNames: readonly ModifierName[];
+
+/**
+Basic foreground color names.
+*/
+export const foregroundColorNames: readonly ForegroundColorName[];
+
+/**
+Basic background color names.
+*/
+export const backgroundColorNames: readonly BackgroundColorName[];
+
+/*
+Basic color names. The combination of foreground and background color names.
+*/
+export const colorNames: readonly ColorName[];
+
 declare const ansiStyles: {
 	readonly modifier: Modifier;
 	readonly color: ColorBase & ForegroundColor;
 	readonly bgColor: ColorBase & BackgroundColor;
 	readonly codes: ReadonlyMap<number, number>;
 } & ForegroundColor & BackgroundColor & Modifier & ConvertColor;
-
-/**
-Basic modifier names.
-*/
-declare const modifierNames: readonly ModifierName[];
-
-/**
-Basic foreground color names.
-*/
-declare const foregroundColorNames: readonly ForegroundColorName[];
-
-/**
-Basic background color names.
-*/
-declare const backgroundColorNames: readonly BackgroundColorName[];
-
-/*
-Basic color names. The combination of foreground and background color names.
-*/
-declare const colorNames: readonly ColorName[];
 
 export default ansiStyles;
