@@ -181,24 +181,24 @@ export interface ConvertColor {
 }
 
 /**
-Basic modifiers.
+Basic modifier names.
 */
 export type ModifierName = keyof Modifier;
 
 /**
-Basic foreground colors.
+Basic foreground color names.
 [More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
 */
 export type ForegroundColorName = keyof ForegroundColor;
 
 /**
-Basic background colors.
+Basic background color names.
 [More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
 */
 export type BackgroundColorName = keyof BackgroundColor;
 
 /**
-Basic colors. The combination of foreground and background color names.
+Basic color names. The combination of foreground and background color names.
 [More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
 */
 export type ColorName = ForegroundColorName | BackgroundColorName;
