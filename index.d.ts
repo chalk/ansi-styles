@@ -183,39 +183,25 @@ export interface ConvertColor {
 /**
 Basic modifiers.
 */
-export type ModifierName =
-	| 'reset'
-	| 'bold'
-	| 'dim'
-	| 'italic'
-	| 'underline'
-	| 'overline'
-	| 'inverse'
-	| 'hidden'
-	| 'strikethrough'
-	| 'visible';
-
-type BasicColor = 'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white';
-type BrightColor = `${BasicColor}Bright`;
-type Grey = 'gray' | 'grey';
+export type ModifierName = keyof Modifier;
 
 /**
 Basic foreground colors.
 [More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
 */
-export type ForegroundColorName = BasicColor | BrightColor | Grey;
+export type ForegroundColorName = keyof ForegroundColor;
 
 /**
 Basic background colors.
 [More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
 */
-export type BackgroundColorName = `bg${Capitalize<ForegroundColorName>}`;
+export type BackgroundColorName = keyof BackgroundColor;
 
 /**
 Basic colors. The combination of foreground and background color names.
 [More colors here.](https://github.com/chalk/chalk/blob/main/readme.md#256-and-truecolor-color-support)
 */
-export type ColorName = ForegroundColor | BackgroundColor;
+export type ColorName = ForegroundColorName | BackgroundColorName;
 
 /**
 Basic modifier names.
