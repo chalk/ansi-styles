@@ -1,5 +1,5 @@
-import {expectType} from 'tsd';
-import ansiStyles, {CSPair} from './index.js';
+import {expectAssignable, expectError, expectType} from 'tsd';
+import ansiStyles, {CSPair, ModifierName, ForegroundColorName, BackgroundColorName, ColorName} from './index.js';
 
 expectType<ReadonlyMap<number, number>>(ansiStyles.codes);
 
@@ -118,3 +118,21 @@ expectType<CSPair>(ansiStyles.italic);
 expectType<CSPair>(ansiStyles.reset);
 expectType<CSPair>(ansiStyles.strikethrough);
 expectType<CSPair>(ansiStyles.underline);
+
+// --- ModifierName ---
+expectAssignable<ModifierName>('strikethrough');
+expectError<ModifierName>('delete');
+
+// --- ForegroundColorName ---
+expectAssignable<ForegroundColorName>('blue');
+expectError<ForegroundColorName>('pink');
+
+// --- ForegroundColorName ---
+expectAssignable<BackgroundColorName>('bgBlue');
+expectError<BackgroundColorName>('bgPink');
+
+// --- ColorName ---
+expectAssignable<ColorName>('blue');
+expectAssignable<ColorName>('bgBlue');
+expectError<ColorName>('pink');
+expectError<ColorName>('bgPink');
