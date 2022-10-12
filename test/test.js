@@ -67,10 +67,11 @@ test('rgb → truecolor is stubbed', t => {
 });
 
 test('non-styles should not be exported', t => {
-	const styleNameFilter = name => name === 'close' || name.startsWith('ansi');
-	t.is(modifierNames.filter(name => styleNameFilter(name)).length, 0);
-	t.is(foregroundColorNames.filter(name => styleNameFilter(name)).length, 0);
-	t.is(backgroundColorNames.filter(name => styleNameFilter(name)).length, 0);
-	t.is(backgroundColorNames.filter(name => !name.startsWith('bg')).length, 0);
-	t.is(colorNames.filter(name => styleNameFilter(name)).length, 0);
+	const isNonStyle = name => name === 'close' || name.startsWith('ansi');
+	t.false(modifierNames.some(name => isNonStyle(name)));
+	t.false(modifierNames.some(name => isNonStyle(name)));
+	t.false(foregroundColorNames.some(name => isNonStyle(name)));
+	t.false(backgroundColorNames.some(name => isNonStyle(name)));
+	t.false(backgroundColorNames.some(name => !name.startsWith('bg')));
+	t.false(colorNames.some(name => isNonStyle(name)));
 });
