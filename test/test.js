@@ -69,7 +69,6 @@ test('rgb → truecolor is stubbed', t => {
 test('non-styles should not be exported', t => {
 	const isNonStyle = name => name === 'close' || name.startsWith('ansi');
 	t.false(modifierNames.some(name => isNonStyle(name)));
-	t.false(modifierNames.some(name => isNonStyle(name)));
 	t.false(foregroundColorNames.some(name => isNonStyle(name)));
 	t.false(backgroundColorNames.some(name => isNonStyle(name)));
 	t.true(backgroundColorNames.every(name => name.startsWith('bg')));
