@@ -1,5 +1,5 @@
 import test from 'ava';
-import ansiStyles from '../index.js';
+import ansiStyles, {modifierNames, foregroundColorNames, backgroundColorNames, colorNames} from '../index.js';
 
 test('return ANSI escape codes', t => {
 	t.is(ansiStyles.green.open, '\u001B[32m');
@@ -64,4 +64,12 @@ test('export raw ANSI escape codes', t => {
 
 test('rgb → truecolor is stubbed', t => {
 	t.is(ansiStyles.color.ansi16m(123, 45, 67), '\u001B[38;2;123;45;67m');
+});
+
+test('non-styles should not be exported', t => {
+	const styleNameFilter = name => name === 'close' || name.startsWith('ansi');
+	t.is(modifierNames.filter(name => styleNameFilter(name)).length, 0);
+	t.is(foregroundColorNames.filter(name => styleNameFilter(name)).length, 0);
+	t.is(backgroundColorNames.filter(name => styleNameFilter(name)).length, 0);
+	t.is(colorNames.filter(name => styleNameFilter(name)).length, 0);
 });
