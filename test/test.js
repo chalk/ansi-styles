@@ -71,5 +71,6 @@ test('non-styles should not be exported', t => {
 	t.is(modifierNames.filter(name => styleNameFilter(name)).length, 0);
 	t.is(foregroundColorNames.filter(name => styleNameFilter(name)).length, 0);
 	t.is(backgroundColorNames.filter(name => styleNameFilter(name)).length, 0);
+	t.is(backgroundColorNames.filter(name => !name.startsWith('bg')).length, 0);
 	t.is(colorNames.filter(name => styleNameFilter(name)).length, 0);
 });
