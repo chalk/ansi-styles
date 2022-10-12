@@ -72,6 +72,6 @@ test('non-styles should not be exported', t => {
 	t.false(modifierNames.some(name => isNonStyle(name)));
 	t.false(foregroundColorNames.some(name => isNonStyle(name)));
 	t.false(backgroundColorNames.some(name => isNonStyle(name)));
-	t.false(backgroundColorNames.some(name => !name.startsWith('bg')));
+	t.true(backgroundColorNames.every(name => name.startsWith('bg')));
 	t.false(colorNames.some(name => isNonStyle(name)));
 });
