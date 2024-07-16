@@ -1,5 +1,11 @@
 import {expectAssignable, expectError, expectType} from 'tsd';
-import ansiStyles, {CSPair, ModifierName, ForegroundColorName, BackgroundColorName, ColorName} from './index.js';
+import ansiStyles, {
+	type BackgroundColorName,
+	type ColorName,
+	type CSPair,
+	type ForegroundColorName,
+	type ModifierName,
+} from './index.js';
 
 expectType<ReadonlyMap<number, number>>(ansiStyles.codes);
 
