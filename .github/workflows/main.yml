@@ -13,9 +13,6 @@ jobs:
           - 22
           - 20
           - 18
-          - 16
-          - 14
-          - 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
