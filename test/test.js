@@ -1,5 +1,10 @@
 import test from 'ava';
-import ansiStyles, {modifierNames, foregroundColorNames, backgroundColorNames, colorNames} from '../index.js';
+import ansiStyles, {
+	backgroundColorNames,
+	colorNames,
+	foregroundColorNames,
+	modifierNames,
+} from '../index.js';
 
 test('return ANSI escape codes', t => {
 	t.is(ansiStyles.green.open, '\u001B[32m');
