@@ -7,9 +7,10 @@ jobs:
     name: Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         node-version:
+          - 24
           - 22
           - 20
           - 18
