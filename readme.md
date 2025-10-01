@@ -133,7 +133,7 @@ console.log(styles.codes.get(36));
 
 ## 16 / 256 / 16 million (TrueColor) support
 
-`ansi-styles` allows converting between various color formats and ANSI escapes, with support for 16, 256 and [16 million colors](https://gist.github.com/XVilka/8346728).
+`ansi-styles` allows converting between various color formats and ANSI escapes, with support for 16, 256 and [16 million colors](https://github.com/termstandard/colors).
 
 The following color spaces are supported:
 
