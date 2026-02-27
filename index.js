@@ -6,6 +6,9 @@ const wrapAnsi256 = (offset = 0) => code => `\u001B[${38 + offset};5;${code}m`;
 
 const wrapAnsi16m = (offset = 0) => (red, green, blue) => `\u001B[${38 + offset};2;${red};${green};${blue}m`;
 
+const blackBright = [90, 39];
+const bgBlackBright = [100, 49];
+
 const styles = {
 	modifier: {
 		reset: [0, 0],
@@ -30,9 +33,9 @@ const styles = {
 		white: [37, 39],
 
 		// Bright color
-		blackBright: [90, 39],
-		gray: [90, 39], // Alias of `blackBright`
-		grey: [90, 39], // Alias of `blackBright`
+		blackBright,
+		gray: blackBright,
+		grey: blackBright,
 		redBright: [91, 39],
 		greenBright: [92, 39],
 		yellowBright: [93, 39],
@@ -52,9 +55,9 @@ const styles = {
 		bgWhite: [47, 49],
 
 		// Bright color
-		bgBlackBright: [100, 49],
-		bgGray: [100, 49], // Alias of `bgBlackBright`
-		bgGrey: [100, 49], // Alias of `bgBlackBright`
+		bgBlackBright,
+		bgGray: bgBlackBright,
+		bgGrey: bgBlackBright,
 		bgRedBright: [101, 49],
 		bgGreenBright: [102, 49],
 		bgYellowBright: [103, 49],
