@@ -36,9 +36,9 @@ console.log(`${styles.color.ansi16m(...styles.hexToRgb('#abcdef'))}Hello World${
 
 Each style has an `open` and `close` property.
 
-### `modifierNames`, `foregroundColorNames`, `backgroundColorNames`, and `colorNames`
+### `modifierNames`, `foregroundColorNames`, `backgroundColorNames`, `underlineColorNames`, and `colorNames`
 
-All supported style strings are exposed as an array of strings for convenience. `colorNames` is the combination of `foregroundColorNames` and `backgroundColorNames`.
+All supported style strings are exposed as an array of strings for convenience. `colorNames` is the combination of `foregroundColorNames` and `backgroundColorNames`. Underline color names are kept separate in `underlineColorNames`.
 
 This can be useful if you need to validate input:
 
@@ -60,7 +60,11 @@ console.log(foregroundColorNames.includes('pink'));
 - `bold`
 - `dim`
 - `italic` *(Not widely supported)*
-- `underline`
+- `underline` - Put a horizontal line below the text. *(Not widely supported)*
+- `underlineDouble` - Put a double horizontal line below the text. *(Not widely supported)*
+- `underlineCurly` - Put a curly horizontal line below the text. *(Not widely supported)*
+- `underlineDotted` - Put a dotted horizontal line below the text. *(Not widely supported)*
+- `underlineDashed` - Put a dashed horizontal line below the text. *(Not widely supported)*
 - `overline` *Supported on VTE-based terminals, the GNOME terminal, mintty, and Git Bash.*
 - `inverse`
 - `hidden`
@@ -104,6 +108,29 @@ console.log(foregroundColorNames.includes('pink'));
 - `bgCyanBright`
 - `bgWhiteBright`
 
+### Underline colors
+
+The underline color is set independently of the text color, so the color is only visible when an underline style is also applied. *(Not widely supported)*
+
+Unlike text and background colors, there is no basic 16-color form for underline colors, so they always use the 256-color escape. At level 1 they are downsampled to the first 16 palette entries rather than to a basic color code.
+
+- `underlineBlack`
+- `underlineRed`
+- `underlineGreen`
+- `underlineYellow`
+- `underlineBlue`
+- `underlineMagenta`
+- `underlineCyan`
+- `underlineWhite`
+- `underlineBlackBright` (alias: `underlineGray`, `underlineGrey`)
+- `underlineRedBright`
+- `underlineGreenBright`
+- `underlineYellowBright`
+- `underlineBlueBright`
+- `underlineMagentaBright`
+- `underlineCyanBright`
+- `underlineWhiteBright`
+
 ## Advanced usage
 
 By default, you get a map of styles, but the styles are also available as groups. They are non-enumerable so they don't show up unless you access them explicitly. This makes it easier to expose only a subset in a higher-level module.
@@ -111,6 +138,7 @@ By default, you get a map of styles, but the styles are also available as groups
 - `styles.modifier`
 - `styles.color`
 - `styles.bgColor`
+- `styles.underlineColor`
 
 ###### Example
 
@@ -155,6 +183,9 @@ styles.bgColor.ansi256(styles.hexToAnsi256('#C0FFEE')); // HEX to 256 color ansi
 
 styles.color.ansi16m(100, 200, 15); // RGB to 16 million color foreground code
 styles.bgColor.ansi16m(...styles.hexToRgb('#C0FFEE')); // Hex (RGB) to 16 million color foreground code
+
+styles.underlineColor.ansi256(styles.hexToAnsi256('#C0FFEE')); // HEX to 256 color underline code
+styles.underlineColor.ansi16m(...styles.hexToRgb('#C0FFEE')); // Hex (RGB) to 16 million color underline code
 ```
 
 ## Related
