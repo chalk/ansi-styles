@@ -119,7 +119,7 @@ function assembleStyles() {
 			group[styleName] = styles[styleName];
 
 			// Only the leading SGR parameter identifies a style, so `4:3` and `58;5;1` are keyed as `4` and `58`.
-			codes.set(Number.parseInt(style[0], 10), style[1]);
+			codes.set(Number(String(style[0]).split(/[:;]/v, 1)[0]), style[1]);
 		}
 
 		Object.defineProperty(styles, groupName, {
@@ -174,7 +174,7 @@ function assembleStyles() {
 		},
 		hexToRgb: {
 			value(hex) {
-				const matches = /[\da-f]{6}|[\da-f]{3}/i.exec(hex.toString(16));
+				const matches = /[\da-f]{6}|[\da-f]{3}/iv.exec(hex.toString(16));
 				if (!matches) {
 					return [0, 0, 0];
 				}

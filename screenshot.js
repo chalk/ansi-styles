@@ -11,17 +11,17 @@ for (const [key, value] of Object.entries(ansiStyles)) {
 	// We skip `overline` as almost no terminal supports it so we cannot show it off.
 	if (
 		key === 'reset'
-			|| key === 'hidden'
-			|| key === 'grey'
-			|| key === 'bgGray'
-			|| key === 'bgGrey'
-			|| key === 'overline'
-			|| key.endsWith('Bright')
+		|| key === 'hidden'
+		|| key === 'grey'
+		|| key === 'bgGray'
+		|| key === 'bgGrey'
+		|| key === 'overline'
+		|| key.endsWith('Bright')
 	) {
 		continue;
 	}
 
-	if (/^bg[^B]/.test(key)) {
+	if (/^bg[^B]/v.test(key)) {
 		code = ansiStyles.black.open + code;
 	}
 

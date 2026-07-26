@@ -112,7 +112,7 @@ console.log(foregroundColorNames.includes('pink'));
 
 The underline color is set independently of the text color, so the color is only visible when an underline style is also applied. *(Not widely supported)*
 
-Unlike text and background colors, there is no basic 16-color form for underline colors, so they always use the 256-color escape. At level 1 they are downsampled to the first 16 palette entries rather than to a basic color code.
+Unlike text and background colors, underline colors have no basic 16-color form. Named underline colors and `underlineColor.ansi()` use the first 16 entries of the 256-color palette. `underlineColor.ansi256()` emits a 256-color escape, and `underlineColor.ansi16m()` emits a truecolor escape.
 
 - `underlineBlack`
 - `underlineRed`
@@ -140,7 +140,7 @@ By default, you get a map of styles, but the styles are also available as groups
 - `styles.bgColor`
 - `styles.underlineColor`
 
-###### Example
+###### Style groups example
 
 ```js
 import styles from 'ansi-styles';
@@ -148,9 +148,9 @@ import styles from 'ansi-styles';
 console.log(styles.color.green.open);
 ```
 
-Raw escape codes (i.e. without the CSI escape prefix `\u001B[` and render mode postfix `m`) are available under `styles.codes`, which returns a `Map` with the open codes as keys and close codes as values.
+The leading SGR parameters of the styles are available under `styles.codes`, which returns a `Map` with the open codes as keys and close codes as values. Parameterized styles such as `4:2` and `58;5;0` are keyed by their leading parameter, `4` and `58` respectively.
 
-###### Example
+###### Style codes example
 
 ```js
 import styles from 'ansi-styles';
@@ -180,6 +180,7 @@ styles.bgColor.ansi(styles.hexToAnsi('#C0FFEE')); // HEX to 16 color ansi foregr
 
 styles.color.ansi256(styles.rgbToAnsi256(100, 200, 15)); // RGB to 256 color ansi foreground code
 styles.bgColor.ansi256(styles.hexToAnsi256('#C0FFEE')); // HEX to 256 color ansi foreground code
+styles.underlineColor.ansi(styles.rgbToAnsi(100, 200, 15)); // RGB to underline code using the first 16 palette entries
 
 styles.color.ansi16m(100, 200, 15); // RGB to 16 million color foreground code
 styles.bgColor.ansi16m(...styles.hexToRgb('#C0FFEE')); // Hex (RGB) to 16 million color foreground code
@@ -196,9 +197,3 @@ styles.underlineColor.ansi16m(...styles.hexToRgb('#C0FFEE')); // Hex (RGB) to 16
 
 - [Sindre Sorhus](https://github.com/sindresorhus)
 - [Josh Junon](https://github.com/qix-)
-
-## For enterprise
-
-Available as part of the Tidelift Subscription.
-
-The maintainers of `ansi-styles` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-ansi-styles?utm_source=npm-ansi-styles&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
